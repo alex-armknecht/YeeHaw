@@ -1,0 +1,25 @@
+{
+  "name": "yeehaw",
+  "version": "1.0.0",
+  "description": "a compiler for YeeHaw",
+  "main": "YeeHaw.js",
+  "type": "module",
+  "scripts": {
+    "test": "c8 mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alex-armknecht/YeeHaw.git"
+  },
+  "keywords": [
+    "compiler",
+    "YeeHaw",
+    "homework"
+  ],
+  "author": "Alex Armknecht, Anna Garren, Arusha Ramanathan, Hunter Krasa, Adam Trafecanty, Saarah Peer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alex-armknecht/YeeHaw/issues"
+  },
+  "homepage": "https://github.com/alex-armknecht/YeeHaw#readme"
+}
