@@ -13,7 +13,7 @@ Howdy Partner! YeeHaw is a cowboy themed language where you can experience the f
 
 ## Examples:
 
-Example 1:
+"Howdy, partner."
 
 <table>
 <tr>
@@ -23,7 +23,7 @@ Example 1:
 <td>
 
 ```Javascript
-Example code goes here.
+console.log("Howdy, partner.")
 ```
 
 </td>
@@ -31,14 +31,14 @@ Example code goes here.
 <td>
 
 ```
-Example code goes here.
+say "Howdy, partner."
 ```
 
 </td>
 </tr>
 </table>
 
-Example 2:
+Variable Declaration and Instantiation:
 
 <table>
 <tr>
@@ -48,7 +48,9 @@ Example 2:
 <td>
 
 ```Javascript
-Example code goes here.
+var num = 5;
+let name = "Woody";
+const age = 20;
 ```
 
 </td>
@@ -56,7 +58,9 @@ Example code goes here.
 <td>
 
 ```
-Example code goes here.
+saddle num = 5
+lasso name = "Woody"
+horseshoe age = 20
 ```
 
 </td>
