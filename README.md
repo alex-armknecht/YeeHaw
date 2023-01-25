@@ -156,13 +156,12 @@ Loops:
 <td>
 
 ```Javascript
-
-```
-
-</td>
 for (Cow cow : herd) {
     cow.moveToPasture()
 }
+```
+
+</td>
 <td>
 
 ```
