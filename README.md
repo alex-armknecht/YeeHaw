@@ -160,11 +160,15 @@ Loops:
 ```
 
 </td>
-
+for (Cow cow : herd) {
+    cow.moveToPasture()
+}
 <td>
 
 ```
-
+yall (Cow cow : herd) {
+    cow.moveToPasture()
+}
 ```
 
 </td>
