@@ -138,7 +138,7 @@ if rooster.crow {
 <td>
 
 ```
-ifin' rooster.crow {
+ifin rooster.crow {
     wakeUp()
 }
 ```
