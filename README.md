@@ -48,9 +48,9 @@ Variable Declaration and Instantiation:
 <td>
 
 ```Javascript
-var num = 5;
-let name = "Woody";
-const age = 20;
+var num = 5
+let name = "Woody"
+const age = 20
 ```
 
 </td>
@@ -100,7 +100,9 @@ Function Declaration:
 <td>
 
 ```Javascript
-
+function multiply(firstNum, secondNum) {
+    return firstNum * secondNum
+}
 ```
 
 </td>
@@ -108,7 +110,9 @@ Function Declaration:
 <td>
 
 ```
-
+yeehaw multiply(firstNum, secondNum){
+    rodeo firstNum * secondNum
+}
 ```
 
 </td>
