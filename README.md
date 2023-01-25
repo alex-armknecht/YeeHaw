@@ -31,7 +31,7 @@ console.log("Howdy, partner.")
 <td>
 
 ```
-say "Howdy, partner."
+dang "Howdy, partner."
 ```
 
 </td>
@@ -60,7 +60,31 @@ const age = 20;
 ```
 saddle num = 5
 lasso name = "Woody"
-horseshoe age = 20
+horseshoe numHorses = 10
+```
+
+</td>
+</tr>
+</table>
+
+Arrays:
+<table>
+<tr>
+<td> JavaScript </td> <td> YeeHaw </td>
+</tr>
+<tr>
+<td>
+
+```Javascript
+let satchel = ['boots', 'spurs', 'horseshoes']
+```
+
+</td>
+
+<td>
+
+```
+lasso satchel = ['boots', 'spurs', 'horseshoes']
 ```
 
 </td>
