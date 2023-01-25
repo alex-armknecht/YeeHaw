@@ -2,9 +2,14 @@
 
 # YeeHaw
 
-A compiler for the language YeeHaw
+Howdy Partner! YeeHaw is a cowboy themed language where you can experience the freedom of the open plains. Learning a new language can be intimidating but YeeHaw was designed to be both easy and fun! A user will never feel defeated while debugging in YeeHaw due to our southern hospitality error messages. You will never have to deal with another dull programming language as long as you think you have what it takes to be a cowboy. YEE YEE!!
 
-Description of Language:
+## Features:
+
+- Loops
+- Nesting
+- Static Typing
+- Object Oriented
 
 ## Examples:
 
@@ -58,4 +63,4 @@ Example code goes here.
 </tr>
 </table>
 
-## About the Authors:
+## Authors: [Anna](https://github.com/agarren20), [Alex](https://github.com/alex-armknecht), [Arusha](https://github.com/arusha-r), [Saarah](https://github.com/speer987), [Adam](https://github.com/atrafec1), & [Hunter](https://github.com/hunterkrasa)
