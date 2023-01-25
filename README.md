@@ -128,7 +128,9 @@ If-Statements:
 <td>
 
 ```Javascript
-
+if rooster.crow {
+    wakeUp()
+}
 ```
 
 </td>
@@ -136,7 +138,9 @@ If-Statements:
 <td>
 
 ```
-
+ifin' rooster.crow {
+    wakeUp()
+}
 ```
 
 </td>
