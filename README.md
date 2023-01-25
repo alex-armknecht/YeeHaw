@@ -1,4 +1,4 @@
-Put your logo here (and in docs) (see examples to see how its done)
+<img src=./docs/YeeHawLogo.jpg width="500" height="500">
 
 # YeeHaw
 
@@ -20,6 +20,7 @@ Example 1:
 ```Javascript
 Example code goes here.
 ```
+
 </td>
 
 <td>
@@ -27,6 +28,7 @@ Example code goes here.
 ```
 Example code goes here.
 ```
+
 </td>
 </tr>
 </table>
@@ -43,6 +45,7 @@ Example 2:
 ```Javascript
 Example code goes here.
 ```
+
 </td>
 
 <td>
@@ -50,6 +53,7 @@ Example code goes here.
 ```
 Example code goes here.
 ```
+
 </td>
 </tr>
 </table>
