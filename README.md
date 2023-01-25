@@ -139,4 +139,28 @@ Loops:
 </tr>
 </table>
 
+Classes:
+<table>
+<tr>
+<td> JavaScript </td> <td> YeeHaw </td>
+</tr>
+<tr>
+<td>
+
+```Javascript
+
+```
+
+</td>
+
+<td>
+
+```
+
+```
+
+</td>
+</tr>
+</table>
+
 ## Authors: [Anna](https://github.com/agarren20), [Alex](https://github.com/alex-armknecht), [Arusha](https://github.com/arusha-r), [Saarah](https://github.com/speer987), [Adam](https://github.com/atrafec1), & [Hunter](https://github.com/hunterkrasa)
