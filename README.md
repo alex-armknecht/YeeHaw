@@ -31,7 +31,7 @@ console.log("Howdy, partner.")
 <td>
 
 ```
-dang "Howdy, partner."
+holler "Howdy, partner."
 ```
 
 </td>
