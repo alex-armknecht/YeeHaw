@@ -11,6 +11,31 @@ Howdy Partner! YeeHaw is a cowboy themed language where you can experience the f
 - Static Typing
 - Object Oriented
 
+## Types
+
+<table>
+  <tr>
+    <th>Javascript Type</th>
+    <th>YeeHaw Types</th>
+  </tr>
+  <tr>
+    <td>boolean (true/false)</td>
+    <td>standoff (hit/miss)</td>
+  </tr>
+  <tr>
+    <td>string</td>
+    <td>rope</td>
+  </tr>
+  <tr>
+    <td>Number</td>
+    <td>bounty</td>
+  </tr>
+  <tr>
+    <td>object</td>
+    <td>thang</td>
+  </tr>
+</table>
+
 ## Examples:
 
 "Howdy, partner."
@@ -68,6 +93,7 @@ horseshoe numHorses = 10
 </table>
 
 Arrays:
+
 <table>
 <tr>
 <td> JavaScript </td> <td> YeeHaw </td>
@@ -92,6 +118,7 @@ lasso satchel = ['boots', 'spurs', 'horseshoes']
 </table>
 
 Function Declaration:
+
 <table>
 <tr>
 <td> JavaScript </td> <td> YeeHaw </td>
@@ -120,6 +147,7 @@ yeehaw multiply(firstNum, secondNum){
 </table>
 
 If-Statements:
+
 <table>
 <tr>
 <td> JavaScript </td> <td> YeeHaw </td>
@@ -148,6 +176,7 @@ ifin rooster.crow {
 </table>
 
 Loops:
+
 <table>
 <tr>
 <td> JavaScript </td> <td> YeeHaw </td>
@@ -175,6 +204,7 @@ yall (Cow cow : herd) {
 </table>
 
 Classes:
+
 <table>
 <tr>
 <td> JavaScript </td> <td> YeeHaw </td>
