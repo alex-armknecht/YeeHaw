@@ -5,31 +5,33 @@ YeeHaw {
             | AssignStmt
             | IfStmt
             
-  PrintStmt  = sqwak "(" Exp ")" "🐦"
-  VarDec     = coo Var "=" Exp "🐦"
-  AssignStmt = id "=" Exp "🐦"
-  IfStmt     = maybe Exp yep Statement+ nope Statement+ fine
+  PrintStmt  = holler  Exp  
+  VarDec     = lasso Var "=" Exp 
+  AssignStmt = id "=" Exp 
+  IfStmt     = ifin Exp hit Statement+ miss Statement+ fine
   
   id        = ~keyword idchar+
-  idchar    = letter | "🌽" | "🪶" | "_"
+  idchar    = letter  "_"
   
-  keyword   = coo | sqwak | maybe | yep | nope | fine
+  keyword   = lasso | holler | ifin | hit | miss | fine
   
   Var       = id
  
   Exp       = Exp "+" Term   --add
             | Exp "-" Term   --sub
+            | Exp "/" Term   --div
+            | Exp "*" Term   --mul
             | Term
   
   Term      = numeral 
             | strlit
             | Var
 
-  coo       = "coo" ~idchar
-  sqwak     = "sqwak" ~idchar
-  maybe     = "maybe" ~idchar
-  yep       = "yep" ~idchar
-  nope      = "nope" ~idchar
+  lasso     = "lasso" ~idchar
+  holler    = "holler" ~idchar
+  ifin      = "ifin" ~idchar
+  hit       = "hit" ~idchar
+  miss      = "miss" ~idchar
   fine      = "fine" ~idchar
 
   numeral   = digit+ ("." digit+)?
