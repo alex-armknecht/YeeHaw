@@ -4,17 +4,23 @@ YeeHaw {
             | VarDec
             | AssignStmt
             | IfStmt
+            | Return
+            | FuncDec
             
   PrintStmt  = holler  Exp  
   VarDec     = lasso Var "=" Exp 
   AssignStmt = id "=" Exp 
   IfStmt     = ifin Exp hit Statement+ miss Statement+ fine
-  
+  Return     = rodeo Exp?
+  Params     = ListOf<id, ",">
+  Block 	   = "{" Statement* "}"
+  FuncDec 	 = yeehaw id"(" Params ")" Block
+
   id        = ~keyword idchar+
   idchar    = letter | "_"
   
-  keyword   = lasso | holler | ifin | hit | miss | fine
-  
+  keyword   = lasso | holler | ifin | hit | miss | fine | yeehaw | rodeo
+   
   Var       = id
  
   Exp       = Exp "+" Term   --add
@@ -34,6 +40,8 @@ YeeHaw {
   hit       = "hit" ~idchar
   miss      = "miss" ~idchar
   fine      = "fine" ~idchar
+  yeehaw 	= "yeehaw" ~idchar
+  rodeo 	= "rodeo" ~idchar
 
   numeral   = digit+ ("." digit+)?
   strlit    = "\"" (~"\"" any)* "\""
