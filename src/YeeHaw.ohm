@@ -11,7 +11,7 @@ YeeHaw {
   IfStmt     = ifin Exp hit Statement+ miss Statement+ fine
   
   id        = ~keyword idchar+
-  idchar    = letter  "_"
+  idchar    = letter | "_"
   
   keyword   = lasso | holler | ifin | hit | miss | fine
   
@@ -26,6 +26,7 @@ YeeHaw {
   Term      = numeral 
             | strlit
             | Var
+            | "(" Exp ")"    --parens
 
   lasso     = "lasso" ~idchar
   holler    = "holler" ~idchar
@@ -36,4 +37,7 @@ YeeHaw {
 
   numeral   = digit+ ("." digit+)?
   strlit    = "\"" (~"\"" any)* "\""
+
+  space    += "//" (~"\n" any)*       --comment
+
 }
