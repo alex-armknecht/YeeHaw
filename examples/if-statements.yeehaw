@@ -1,3 +1,6 @@
-ifin rooster.crow {
-    wakeUp()
-}
+holler "abc"
+lasso scraps = 5.5
+ifin x
+    hit holler "000000"
+    miss happy = 0
+fine

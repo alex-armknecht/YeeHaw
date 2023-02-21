@@ -1,3 +1,0 @@
-yall (Cow cow : herd) {
-    cow.moveToPasture()
-}
