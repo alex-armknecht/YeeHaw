@@ -15,8 +15,8 @@ Howdy Partner! YeeHaw is a cowboy themed language where you can experience the f
 
 <table>
   <tr>
-    <th>Javascript Type</th>
-    <th>YeeHaw Types</th>
+    <th>Javascript</th>
+    <th>YeeHaw</th>
   </tr>
   <tr>
     <td>boolean (true/false)</td>
@@ -33,6 +33,19 @@ Howdy Partner! YeeHaw is a cowboy themed language where you can experience the f
   <tr>
     <td>const</td>
     <td>horseshoe</td>
+  </tr>
+  <tr>
+    <td>function</td>
+    <td>yeehaw</td>
+  </tr>
+</table>
+
+## Other Keywords
+
+<table>
+  <tr>
+    <th>Javascript</th>
+    <th>YeeHaw</th>
   </tr>
   <tr>
     <td>function</td>
