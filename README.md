@@ -23,16 +23,20 @@ Howdy Partner! YeeHaw is a cowboy themed language where you can experience the f
     <td>standoff (hit/miss)</td>
   </tr>
   <tr>
-    <td>string</td>
-    <td>rope</td>
+    <td>var</td>
+    <td>saddle</td>
   </tr>
   <tr>
-    <td>Number</td>
-    <td>bounty</td>
+    <td>let</td>
+    <td>lasso</td>
   </tr>
   <tr>
-    <td>object</td>
-    <td>thang</td>
+    <td>const</td>
+    <td>horseshoe</td>
+  </tr>
+  <tr>
+    <td>function</td>
+    <td>yeehaw</td>
   </tr>
 </table>
 
