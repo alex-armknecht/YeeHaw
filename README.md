@@ -215,7 +215,7 @@ for (Cow cow : herd) {
 <td>
 
 ```
-yall (Cow cow : herd) {
+corrale (Cow cow : herd) {
     cow.moveToPasture()
 }
 ```
