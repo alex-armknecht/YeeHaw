@@ -51,6 +51,10 @@ Howdy Partner! YeeHaw is a cowboy themed language where you can experience the f
     <td>function</td>
     <td>yeehaw</td>
   </tr>
+  <tr>
+    <td>for</td>
+    <td>yall</td>
+  </tr>
 </table>
 
 ## Examples:
