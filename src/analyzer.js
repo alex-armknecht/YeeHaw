@@ -14,7 +14,6 @@ function error(message, node) {
 const YeeHawGrammar = ohm.grammar(fs.readFileSync("src/YeeHaw.ohm"));
 
 export default function analyze(sourceCode) {
-
   const analyzer = YeeHawGrammar.createSemantics().addOperation("rep", {
     Program(body) {
       return new core.Program(body.rep());
@@ -65,9 +64,12 @@ export default function analyze(sourceCode) {
     _iter(...children) {
       return children.map((child) => child.rep());
     },
-    FuncDec(_yeehaw, id, _open, params, _close, body){
+    loop(_corrale, Statement, _colon, Exp) {
+      return new core.Loop(Statement, Exp);
+    },
+    FuncDec(_yeehaw, id, _open, params, _close, body) {
       // TODO complete AST for FuncDec
-    }
+    },
   });
 
   const match = YeeHawGrammar.match(sourceCode);

@@ -16,10 +16,13 @@ YeeHaw {
   Block 	   = "{" Statement* "}"
   FuncDec 	 = yeehaw id"(" Params ")" Block
 
+  Loop      = corrale "(" Statement ":" Exp ")" Block
+
+
   id        = ~keyword idchar+
   idchar    = letter | "_"
   
-  keyword   = lasso | holler | ifin | hit | miss | fine | yeehaw | rodeo
+  keyword   = lasso | holler | ifin | hit | miss | fine | yeehaw | rodeo | corrale
    
   Var       = id
  
@@ -42,6 +45,7 @@ YeeHaw {
   fine      = "fine" ~idchar
   yeehaw 	= "yeehaw" ~idchar
   rodeo 	= "rodeo" ~idchar
+  corrale = "corrale" ~idchar
 
   numeral   = digit+ ("." digit+)?
   strlit    = "\"" (~"\"" any)* "\""

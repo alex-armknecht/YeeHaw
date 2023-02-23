@@ -44,22 +44,28 @@ export class StringLiteral {
 
 export class Return {
   constructor(argument) {
-    this.argument = argument
+    this.argument = argument;
   }
 }
 
 export class FunctionDeclaration {
-    constructor(fun, params, body) {
-        Object.assign(this, { fun, params, body})
-    }
+  constructor(fun, params, body) {
+    Object.assign(this, { fun, params, body });
+  }
 }
 
 export class Function {
   constructor(name, paramCount, readOnly) {
-    Object.assign(this, { name, paramCount, readOnly })
+    Object.assign(this, { name, paramCount, readOnly });
   }
 }
 
+export class Loop {
+  constructor(condition, block) {
+    this.condition = condition;
+    this.block = block;
+  }
+}
 
 // Return a compact and pretty string representation of the node graph,
 // taking care of cycles. Written here from scratch because the built-in
