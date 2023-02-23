@@ -31,6 +31,7 @@ YeeHaw {
             | Exp "-" Term   --sub
             | Exp "/" Term   --div
             | Exp "*" Term   --mul
+            | Exp "==" Term  --equal
             | Term
   
   Term      = numeral 

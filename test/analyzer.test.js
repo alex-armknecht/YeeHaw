@@ -4,14 +4,17 @@ import analyze from "../src/analyzer.js";
 
 const semanticChecks = [
   ["variables can be printed", "lasso x = 5 holler x"],
-  //   ["variables can be reassigned", "let x = 1; x = x * 5 / ((-3) + x);"],
+  ["variables can be reassigned", "lasso x = 1 x = x * 5 / ((3) + x)"],
+  ["string literals work", 'lasso horsename = "Jerry"'],
+  ["binary expressions work", "lasso x = 5 y = 2 lasso z = x - y "],
+  ["if statement works", "lasso x = 1 lasso y = 1 ifin x - y == 0 {holler x}"],
   //   [
   //     "all predefined identifiers",
   //     "print ln(sqrt(sin(cos(hypot(π,1) + exp(5.5E2)))));",
   //   ],
 ];
 
-const sample = `let x=sqrt(9);function f(x)=3*x;while(true){x=3;print(0?f(x):2);}`;
+const sample = `let x=sqrt(9) function f(x)=3*x while(true){x=3 print(0?f(x):2)}`;
 
 // const expected = `   1 | Program statements=[#2,#6,#10]
 //    2 | VariableDeclaration variable=#3 initializer=#4
