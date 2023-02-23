@@ -64,8 +64,8 @@ export default function analyze(sourceCode) {
     _iter(...children) {
       return children.map((child) => child.rep());
     },
-    loop(_corrale, Statement, _colon, Exp) {
-      return new core.Loop(Statement, Exp);
+    Loop(_corrale, _open, type, id, _colon, range, _close, body) {
+      return new core.Loop(type, id, range, body);
     },
     FuncDec(_yeehaw, id, _open, params, _close, body) {
       // TODO complete AST for FuncDec

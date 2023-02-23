@@ -16,7 +16,8 @@ YeeHaw {
   Block 	   = "{" Statement* "}"
   FuncDec 	 = yeehaw id"(" Params ")" Block
 
-  Loop      = corrale "(" Statement ":" Exp ")" Block
+  Loop      = corrale "(" Type id ":" Exp ")" Block
+  Type      = id
 
 
   id        = ~keyword idchar+

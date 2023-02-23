@@ -61,9 +61,8 @@ export class Function {
 }
 
 export class Loop {
-  constructor(condition, block) {
-    this.condition = condition;
-    this.block = block;
+  constructor(type, iterator, range, body) {
+    Object.assign(this, { type, iterator, range, body });
   }
 }
 
