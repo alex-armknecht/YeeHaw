@@ -15,6 +15,9 @@ const semanticChecks = [
     "if statement with else works",
     "lasso x = 1 lasso y = 1 ifin x - y == 0 hit holler x miss holler 1 fine",
   ],
+  //["return statements work", "lasso z = 2+ 2  rodeo z"],
+  ["function declaration works", "yeehaw square(num) { rodeo num * num }"],
+  //["loops works", "corrale (x : 5) {holler x} "],
   //   [
   //     "all predefined identifiers",
   //     "print ln(sqrt(sin(cos(hypot(π,1) + exp(5.5E2)))));",

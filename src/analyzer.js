@@ -18,6 +18,15 @@ export default function analyze(sourceCode) {
     Program(body) {
       return new core.Program(body.rep());
     },
+    Statement(statement) {
+      return statement.rep();
+    },
+    Params(params) {
+      return params.asIteration().rep();
+    },
+    Block(_left, block, _right) {
+      return block.rep();
+    },
     PrintStmt(_holler, argument) {
       return new core.PrintStatement(argument.rep());
     },
@@ -70,15 +79,21 @@ export default function analyze(sourceCode) {
     _iter(...children) {
       return children.map((child) => child.rep());
     },
-    Loop(_corrale, _open, type, id, _colon, range, _close, body) {
-      return new core.Loop(type, id, range, body);
-    },
+    // Loop(_corrale, _open, type, id, _colon, range, _close, body) {
+    //   return new core.Loop(type, id, range, body);
+    // },
     FuncDec(_yeehaw, id, _open, params, _close, body) {
-      // TODO complete AST for FuncDec
+      return new core.FunctionDeclaration(id, params.rep(), body.rep());
     },
+    Return(_rodeo, arg) {
+      return new core.Return(arg.rep());
+    },
+    // _terminal() {
+    //   return this.sourceString;
+    // },
   });
 
   const match = YeeHawGrammar.match(sourceCode);
-  if (!match.succeeded()) error(match.message);
+  //if (!match.succeeded()) error(match.message);
   return analyzer(match).rep();
 }
