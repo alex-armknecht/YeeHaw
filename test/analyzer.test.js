@@ -1,6 +1,6 @@
 import util from "util";
 import assert from "assert/strict";
-import analyze from "../src/analyzer.js";
+import analyze, { error } from "../src/analyzer.js";
 
 const semanticChecks = [
   ["variables can be printed", "lasso x = 5 holler x"],
@@ -8,8 +8,12 @@ const semanticChecks = [
   ["string literals work", 'lasso horsename = "Jerry"'],
   ["binary expressions work", "lasso x = 5 y = 2 lasso z = x - y "],
   [
-    "if statement works",
+    "if statement without else works",
     "lasso x = 1 lasso y = 1 ifin x - y == 0 hit holler x fine",
+  ],
+  [
+    "if statement with else works",
+    "lasso x = 1 lasso y = 1 ifin x - y == 0 hit holler x miss holler 1 fine",
   ],
   //   [
   //     "all predefined identifiers",
@@ -35,16 +39,22 @@ const sample = `let x=sqrt(9) function f(x)=3*x while(true){x=3 print(0?f(x):2)}
 //   14 | Call callee=#7 args=[#3]`;
 
 describe("The analyzer", () => {
+  it("can invoke the error function", () => {
+    assert.throws(() => error("Something bad happened"));
+  });
+  it("can invoke the error function with a node", () => {
+    assert.throws(() => error("OOOH", {}));
+  });
   for (const [scenario, source] of semanticChecks) {
     it(`recognizes ${scenario}`, () => {
       assert.ok(analyze(source));
     });
   }
-  //   for (const [scenario, source, errorMessagePattern] of semanticErrors) {
-  //     it(`throws on ${scenario}`, () => {
-  //       assert.throws(() => analyze(source), errorMessagePattern);
-  //     });
-  //}
+  // for (const [scenario, source, errorMessagePattern] of semanticErrors) {
+  //   it(`throws on ${scenario}`, () => {
+  //     assert.throws(() => analyze(source), errorMessagePattern);
+  //   });
+  // }
   //   it(`produces the expected graph for the simple sample program`, () => {
   //     assert.deepEqual(util.format(analyze(sample)), expected);
   //   });

@@ -31,10 +31,12 @@ YeeHaw {
   Exp       = Exp0 "==" Exp0  --equal
             | Exp0
 
-  Exp0      = Exp0 "+" Term   --add
-            | Exp0 "-" Term   --sub
-            | Exp0 "/" Term   --div
-            | Exp0 "*" Term   --mul
+  Exp0      = Exp0 "+" Exp1   --add
+            | Exp0 "-" Exp1   --sub
+            | Exp1
+
+  Exp1      = Exp1 "/" Term   --div
+            | Exp1 "*" Term   --mul
             | Term
   
   Term      = numeral 
