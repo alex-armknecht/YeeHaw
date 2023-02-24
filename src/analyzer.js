@@ -27,12 +27,15 @@ export default function analyze(sourceCode) {
     AssignStmt(target, _eq, source) {
       return new core.AssignmentStatement(target.rep(), source.rep());
     },
-    IfStmt(_ifin, test, _hit, consequent, _miss, alternate, _fine) {
+    IfStmt_else(_ifin, test, _hit, consequent, _miss, alternate, _fine) {
       return new core.IfStatement(
         test.rep(),
         consequent.rep(),
         alternate.rep()
       );
+    },
+    IfStmt_noelse(_ifin, test, _hit, consequent, _fine) {
+      return new core.IfStatement(test.rep(), consequent.rep(), []);
     },
     id(chars) {
       return this.sourceString;
@@ -40,16 +43,19 @@ export default function analyze(sourceCode) {
     Var(id) {
       return id.rep();
     },
-    Exp_add(left, _plus, right) {
+    Exp_equal(left, _plus, right) {
       return new core.BinaryExpression("+", left.rep(), right.rep());
     },
-    Exp_sub(left, _plus, right) {
+    Exp0_add(left, _plus, right) {
+      return new core.BinaryExpression("+", left.rep(), right.rep());
+    },
+    Exp0_sub(left, _plus, right) {
       return new core.BinaryExpression("-", left.rep(), right.rep());
     },
-    Exp_div(left, _plus, right) {
+    Exp0_div(left, _plus, right) {
       return new core.BinaryExpression("/", left.rep(), right.rep());
     },
-    Exp_mul(left, _plus, right) {
+    Exp0_mul(left, _plus, right) {
       return new core.BinaryExpression("*", left.rep(), right.rep());
     },
     Term_parens(_open, expression, _close) {

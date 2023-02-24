@@ -10,7 +10,8 @@ YeeHaw {
   PrintStmt  = holler  Exp  
   VarDec     = lasso Var "=" Exp 
   AssignStmt = id "=" Exp 
-  IfStmt     = ifin Exp0 hit Statement+ miss Statement+ fine
+  IfStmt     = ifin Exp hit Statement+ miss Statement+ fine  --else
+             | ifin Exp hit Statement+ fine                  --noelse
   Return     = rodeo Exp?
   Params     = ListOf<id, ",">
   Block 	   = "{" Statement* "}"
@@ -27,13 +28,13 @@ YeeHaw {
    
   Var       = id
  
-  Exp0      = Exp "==" Exp  --equal
-            | Exp
+  Exp       = Exp0 "==" Exp0  --equal
+            | Exp0
 
-  Exp       = Exp "+" Term   --add
-            | Exp "-" Term   --sub
-            | Exp "/" Term   --div
-            | Exp "*" Term   --mul
+  Exp0      = Exp0 "+" Term   --add
+            | Exp0 "-" Term   --sub
+            | Exp0 "/" Term   --div
+            | Exp0 "*" Term   --mul
             | Term
   
   Term      = numeral 

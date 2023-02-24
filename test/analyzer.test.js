@@ -7,7 +7,10 @@ const semanticChecks = [
   ["variables can be reassigned", "lasso x = 1 x = x * 5 / ((3) + x)"],
   ["string literals work", 'lasso horsename = "Jerry"'],
   ["binary expressions work", "lasso x = 5 y = 2 lasso z = x - y "],
-  ["if statement works", "lasso x = 1 lasso y = 1 ifin x - y == 0 {holler x}"],
+  [
+    "if statement works",
+    "lasso x = 1 lasso y = 1 ifin x - y == 0 hit holler x fine",
+  ],
   //   [
   //     "all predefined identifiers",
   //     "print ln(sqrt(sin(cos(hypot(π,1) + exp(5.5E2)))));",
