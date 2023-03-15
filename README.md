@@ -1,227 +1,101 @@
-<img src=./docs/YeeHawLogo.jpg width="500" height="500">
+<!DOCTYPE html>
+<html>
+<head>
+	<title>YeeHaw</title>
+</head>
+<body>
+	<img src="./docs/YeeHawLogo.jpg" width="500" height="500">
+	<h1>YeeHaw</h1>
+	<p>Howdy Partner! YeeHaw is a cowboy themed language where you can experience the freedom of the open plains. Learning a new language can be intimidating but YeeHaw was designed to be both easy and fun! A user will never feel defeated while debugging in YeeHaw due to our southern hospitality error messages. You will never have to deal with another dull programming language as long as you think you have what it takes to be a cowboy. YEE YEE!!</p>
 
-# YeeHaw
+	<h2>Features:</h2>
+	<ul>
+		<li>Loops</li>
+		<li>Nesting</li>
+		<li>Static Typing</li>
+		<li>Object Oriented</li>
+	</ul>
 
-Howdy Partner! YeeHaw is a cowboy themed language where you can experience the freedom of the open plains. Learning a new language can be intimidating but YeeHaw was designed to be both easy and fun! A user will never feel defeated while debugging in YeeHaw due to our southern hospitality error messages. You will never have to deal with another dull programming language as long as you think you have what it takes to be a cowboy. YEE YEE!!
+	<h2>Types</h2>
+	<table>
+	  <tr>
+	    <th>Javascript</th>
+	    <th>YeeHaw</th>
+	  </tr>
+	  <tr>
+	    <td>boolean (true/false)</td>
+	    <td>standoff (hit/miss)</td>
+	  </tr>
+	  <tr>
+	    <td>var</td>
+	    <td>saddle</td>
+	  </tr>
+	  <tr>
+	    <td>let</td>
+	    <td>lasso</td>
+	  </tr>
+	  <tr>
+	    <td>const</td>
+	    <td>horseshoe</td>
+	  </tr>
+	  <tr>
+	    <td>function</td>
+	    <td>yeehaw</td>
+	  </tr>
+	</table>
 
-## Features:
+	<h2>Other Keywords</h2>
+	<table>
+	  <tr>
+	    <th>Javascript</th>
+	    <th>YeeHaw</th>
+	  </tr>
+	  <tr>
+	    <td>function</td>
+	    <td>yeehaw</td>
+	  </tr>
+	  <tr>
+	    <td>for</td>
+	    <td>corrale</td>
+	  </tr>
+	</table>
 
-- Loops
-- Nesting
-- Static Typing
-- Object Oriented
+	<h2>Examples:</h2>
 
-## Types
+	<h3>"Howdy, partner."</h3>
+	<table>
+		<tr>
+			<th>Javascript</th>
+			<th>YeeHaw</th>
+		</tr>
+		<tr>
+			<td>
+				<pre><code>console.log("Howdy, partner.")</code></pre>
+			</td>
+			<td>
+				<pre><code>holler "Howdy, partner."</code></pre>
+			</td>
+		</tr>
+	</table>
 
-<table>
-  <tr>
-    <th>Javascript</th>
-    <th>YeeHaw</th>
-  </tr>
-  <tr>
-    <td>boolean (true/false)</td>
-    <td>standoff (hit/miss)</td>
-  </tr>
-  <tr>
-    <td>var</td>
-    <td>saddle</td>
-  </tr>
-  <tr>
-    <td>let</td>
-    <td>lasso</td>
-  </tr>
-  <tr>
-    <td>const</td>
-    <td>horseshoe</td>
-  </tr>
-  <tr>
-    <td>function</td>
-    <td>yeehaw</td>
-  </tr>
-</table>
-
-## Other Keywords
-
-<table>
-  <tr>
-    <th>Javascript</th>
-    <th>YeeHaw</th>
-  </tr>
-  <tr>
-    <td>function</td>
-    <td>yeehaw</td>
-  </tr>
-  <tr>
-    <td>for</td>
-    <td>corrale</td>
-  </tr>
-</table>
-
-## Examples:
-
-"Howdy, partner."
-
-<table>
-<tr>
-<td> JavaScript </td> <td> YeeHaw </td>
-</tr>
-<tr>
-<td>
-
-```Javascript
-console.log("Howdy, partner.")
-```
-
-</td>
-
-<td>
-
-```
-holler "Howdy, partner."
-```
-
-</td>
-</tr>
-</table>
-
-Variable Declaration and Instantiation:
-
-<table>
-<tr>
-<td> JavaScript </td> <td> YeeHaw </td>
-</tr>
-<tr>
-<td>
-
-```Javascript
-var num = 5
+	<h3>Variable Declaration and Instantiation:</h3>
+	<table>
+		<tr>
+			<th>Javascript</th>
+			<th>YeeHaw</th>
+		</tr>
+		<tr>
+			<td>
+				<pre><code>var num = 5
 let name = "Woody"
-const age = 20
-```
-
-</td>
-
-<td>
-
-```
-saddle num = 5
+const age = 20</code></pre>
+			</td>
+			<td>
+				<pre><code>saddle num = 5
 lasso name = "Woody"
-horseshoe numHorses = 10
-```
+horseshoe numHorses = 10</code></pre>
+			</td>
+		</tr>
+	</table>
 
-</td>
-</tr>
-</table>
-
-Arrays:
-
-<table>
-<tr>
-<td> JavaScript </td> <td> YeeHaw </td>
-</tr>
-<tr>
-<td>
-
-```Javascript
-let satchel = ['boots', 'spurs', 'horseshoes']
-```
-
-</td>
-
-<td>
-
-```
-lasso satchel = ['boots', 'spurs', 'horseshoes']
-```
-
-</td>
-</tr>
-</table>
-
-Function Declaration:
-
-<table>
-<tr>
-<td> JavaScript </td> <td> YeeHaw </td>
-</tr>
-<tr>
-<td>
-
-```Javascript
-function multiply(firstNum, secondNum) {
-    return firstNum * secondNum
-}
-```
-
-</td>
-
-<td>
-
-```
-yeehaw multiply(firstNum, secondNum){
-    rodeo firstNum * secondNum
-}
-```
-
-</td>
-</tr>
-</table>
-
-If-Statements:
-
-<table>
-<tr>
-<td> JavaScript </td> <td> YeeHaw </td>
-</tr>
-<tr>
-<td>
-
-```Javascript
-if rooster.crow {
-    wakeUp()
-}
-```
-
-</td>
-
-<td>
-
-```
-ifin rooster.crow {
-    wakeUp()
-}
-```
-
-</td>
-</tr>
-</table>
-
-Loops:
-
-<table>
-<tr>
-<td> JavaScript </td> <td> YeeHaw </td>
-</tr>
-<tr>
-<td>
-
-```Javascript
-for (Cow cow : herd) {
-    cow.moveToPasture()
-}
-```
-
-</td>
-<td>
-
-```
-corrale (Cow cow : herd) {
-    cow.moveToPasture()
-}
-```
-
-</td>
-</tr>
-</table>
-
-## Authors: [Anna](https://github.com/agarren20), [Alex](https://github.com/alex-armknecht), [Arusha](https://github.com/arusha-r), [Saarah](https://github.com/speer987), [Adam](https://github.com/atrafec1), & [Hunter](https://github.com/hunterkrasa)
+	<h3
