@@ -54,11 +54,20 @@ export class FunctionDeclaration {
   }
 }
 
-// export class Function {
-//   constructor(name, paramCount, readOnly) {
-//     Object.assign(this, { name, paramCount, readOnly });
-//   }
-// }
+export class Function {
+  // Generated when processing a function declaration
+  constructor(name) {
+    Object.assign(this, {name})
+  }
+}
+
+// Throw an error message that takes advantage of Ohm's messaging
+export function error(message, node) {
+  if (node) {
+    throw new Error(`${node.source.getLineAndColumnMessage()}${message}`);
+  }
+  throw new Error(message);
+}
 
 // export class Loop {
 //   constructor(type, iterator, range, body) {
