@@ -18,7 +18,7 @@ YeeHaw {
   Params      = ListOf<id, ",">
   Block 	    = "{" Statement* "}"
   FuncDec 	  = yeehaw id"(" Params ")" Block
-  ConstBlock  = "{" Constructor "}"
+  ConstBlock  = "{" Constructor Statement* "}"
   ClassDec	  = cowhide id ConstBlock
   Constructor = yeehaw "***"cactus"***""(" Params ")" Block
   DotCall		  = id"."id"(" Params ")"
