@@ -15,16 +15,16 @@ export function error(message, node) {
 
 // Checking Conditions inpspired by Carlos
 function must(condition, message, errorLocation) {
-  if (!condition) core.error(message, errorLocation)
+  if (!condition) error(message, errorLocation)
 }
 
 function mustNotAlreadyBeDeclared(context, name) {
   must(!context.sees(name), `Identifier ${name} already declared`)
 }
 
-function mustHaveBeenFound(entity, name) {
-  must(entity, `Identifier ${name} not declared`)
-}
+// function mustHaveBeenFound(entity, name) {
+//   must(entity, `Identifier ${name} not declared`)
+// }
 
 // Context Class inspired by Carlos
 class Context {
@@ -163,6 +163,6 @@ export default function analyze(sourceCode) {
   });
 
   const match = YeeHawGrammar.match(sourceCode)
-  if (!match.succeeded()) core.error(match.message)
+  if (!match.succeeded()) error(match.message)
   return analyzer(match).rep()
 }
