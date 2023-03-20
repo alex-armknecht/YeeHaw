@@ -32,7 +32,7 @@ const semanticChecks = [
   // Test 11
   // ["constructor with params works", "cowhide myClass{ yeehaw ***cactus***(myVar1, myVar2){} yeehaw sayHowdy(){}}"],
   // Test 12
-  // ["loops works", "corrale (x : 5) {holler x} "],
+  // ["for loops work", "corrale (x : 5) {holler x} "],
   // Test 13
   //   [
   //     "all predefined identifiers",
@@ -42,10 +42,14 @@ const semanticChecks = [
   // ["dot expression works", "cows.herd()"]
   // Test 15
   // ["dot call works", favoriteCow.name]
+  // Test 16
+  // ["while loops work", ""]
 ];
 
-const sample = `let x=sqrt(9) function f(x)=3*x while(true){x=3 print(0?f(x):2)}`;
-
+// const sample = `let x=sqrt(9) function f(x)=3*x while(true){x=3 print(0?f(x):2)}`;
+const semanticErrors = [
+  // ["non-distinct fields"]
+]
 // const expected = `   1 | Program statements=[#2,#6,#10]
 //    2 | VariableDeclaration variable=#3 initializer=#4
 //    3 | Variable name='x' readOnly=false

@@ -13,7 +13,7 @@ export function error(message, node) {
   throw new Error(message);
 }
 
-// Checking Conditions inpspired by Carlos
+// CHECKING FUNCTIONS (need atleast 5 checking functions)
 function must(condition, message, errorLocation) {
   if (!condition) error(message, errorLocation)
 }
@@ -22,7 +22,7 @@ function mustNotAlreadyBeDeclared(context, name) {
   must(!context.sees(name), `Identifier ${name} already declared`)
 }
 
-// Context Class inspired by Carlos
+// CONTEXT CLASS (inspired by Carlos)
 class Context {
   constructor({ parent = null, locals = new Map(), inLoop = false, function: f = null }) {
     Object.assign(this, { parent, locals, inLoop, function: f })
