@@ -61,12 +61,11 @@ export class Function {
   }
 }
 
-// export class DotCall {
-//   // Generated when processing a function declaration
-//   constructor(id1, _dot, id2, _open, params, _close) {
-//     Object.assign(this, {id1, id2, params})
-//   }
-// }
+export class DotCall {
+  constructor(id1, id2, params) {
+    Object.assign(this, { id1, id2, params })
+  }
+}
 
 // export class Loop {
 //   constructor(type, iterator, range, body) {
