@@ -1,3 +1,4 @@
-yeehaw multiply(numOne, numTwo) {
+yeehaw multiply(numOne, numTwo):
+	lasso numOne = 5
+	lasso numTwo = 3
 	rodeo numOne * numTwo
-}

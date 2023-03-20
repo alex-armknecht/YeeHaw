@@ -5,6 +5,14 @@ import * as core from "./core.js";
 
 const YeeHawGrammar = ohm.grammar(fs.readFileSync("src/YeeHaw.ohm"));
 
+// Throw an error message that takes advantage of Ohm's messaging
+export function error(message, node) {
+  if (node) {
+    throw new Error(`${node.source.getLineAndColumnMessage()}${message}`);
+  }
+  throw new Error(message);
+}
+
 // Checking Conditions inpspired by Carlos
 function must(condition, message, errorLocation) {
   if (!condition) core.error(message, errorLocation)
@@ -57,7 +65,7 @@ export default function analyze(sourceCode) {
       return params.asIteration().rep();
     },
 
-    Block(_left, block, _right) {
+    Block(_left, block) {
       return block.rep();
     },
 
@@ -129,9 +137,9 @@ export default function analyze(sourceCode) {
       return children.map((child) => child.rep());
     },
 
-    // Loop(_corrale, _open, type, id, _colon, range, _close, body) {
-    //   return new core.Loop(type, id, range, body);
-    // },
+    Loop(_corrale, _open, type, id, _colon, range, _close, body) {
+      return new core.Loop(type, id, range, body);
+    },
 
     FuncDec(_yeehaw, id, _open, params, _close, body) {
       // Inspired by Carlos
