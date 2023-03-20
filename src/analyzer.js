@@ -65,7 +65,7 @@ export default function analyze(sourceCode) {
       return params.asIteration().rep();
     },
 
-    Block(_left, block) {
+    Block(_left, block, _right) {
       return block.rep();
     },
 
