@@ -39,7 +39,7 @@ const semanticChecks = [
   //     "print ln(sqrt(sin(cos(hypot(π,1) + exp(5.5E2)))));",
   //   ],
   // Test 14
-  ["dot call works", "cows.herd()"]
+  ["dot call works", "cows.herd()"],
   // Test 15
   ["dot expression works", "favoriteCow.name"]
   // Test 16
