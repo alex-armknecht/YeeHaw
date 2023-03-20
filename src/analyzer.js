@@ -154,6 +154,10 @@ export default function analyze(sourceCode) {
 
     DotCall(id1, _dot, id2, _open, params, _close) {
       return new core.DotCall(id1.rep(), id2.rep(), params.asIteration().rep())
+    },
+
+    DotExp(id1, _dot, id2) {
+      return new core.DotExp(id1.rep(), id2.rep())
     }
       
   });

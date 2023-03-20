@@ -67,6 +67,12 @@ export class DotCall {
   }
 }
 
+export class DotExp {
+  constructor(id1, id2) {
+    Object.assign(this, { id1, id2 })
+  }
+}
+
 // export class Loop {
 //   constructor(type, iterator, range, body) {
 //     Object.assign(this, { type, iterator, range, body });
