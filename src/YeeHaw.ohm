@@ -6,25 +6,31 @@ YeeHaw {
             | IfStmt
             | Return
             | FuncDec
+            | DotCall 
+            | DotExp
             
-  PrintStmt  = holler  Exp  
-  VarDec     = lasso Var "=" Exp 
-  AssignStmt = id "=" Exp 
-  IfStmt     = ifin Exp hit Statement+ miss Statement+ fine  --else
-             | ifin Exp hit Statement+ fine                  --noelse
-  Return     = rodeo Exp?
-  Params     = ListOf<id, ",">
-  Block 	   = "{" Statement* "}"
-  FuncDec 	 = yeehaw id"(" Params ")" Block
+  PrintStmt   = holler  Exp  
+  VarDec      = lasso Var "=" Exp 
+  AssignStmt  = id "=" Exp 
+  IfStmt      = ifin Exp hit Statement+ miss Statement+ fine  --else
+              | ifin Exp hit Statement+ fine                  --noelse
+  Return      = rodeo Exp?
+  Params      = ListOf<id, ",">
+  Block 	    = "{" Statement* "}"
+  FuncDec 	  = yeehaw id"(" Params ")" Block
+  ConstBlock  = "{" Constructor "}"
+  ClassDec	  = cowhide id ConstBlock
+  Constructor = yeehaw "***"cactus"***""(" Params ")" Block
+  DotCall		  = id"."id"(" Params ")"
+  DotExp	    = id"."id
 
   Loop      = corrale "(" Type id ":" Exp ")" Block
   Type      = id
 
-
   id        = ~keyword idchar+
   idchar    = letter | "_"
   
-  keyword   = lasso | holler | ifin | hit | miss | fine | yeehaw | rodeo | corrale
+  keyword   = lasso | holler | ifin | hit | miss | fine | yeehaw | rodeo | corrale | cowhide | cactus
    
   Var       = id
  
@@ -50,9 +56,11 @@ YeeHaw {
   hit       = "hit" ~idchar
   miss      = "miss" ~idchar
   fine      = "fine" ~idchar
-  yeehaw 	= "yeehaw" ~idchar
-  rodeo 	= "rodeo" ~idchar
-  corrale = "corrale" ~idchar
+  yeehaw 	  = "yeehaw" ~idchar
+  rodeo 	  = "rodeo" ~idchar
+  corrale   = "corrale" ~idchar
+  cowhide   = "cowhide" ~idchar
+  cactus    = "cactus" ~idchar
 
   numeral   = digit+ ("." digit+)?
   strlit    = "\"" (~"\"" any)* "\""
