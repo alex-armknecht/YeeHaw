@@ -151,6 +151,11 @@ export default function analyze(sourceCode) {
     _terminal() {
       return this.sourceString;
     },
+
+    // DotCall(id1, _dot, id2, _open, params, _close) {
+    //   return new core.DotCall(id1.rep(), id2.rep(), params.rep())
+    // }
+      
   });
 
   const match = YeeHawGrammar.match(sourceCode)

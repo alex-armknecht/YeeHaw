@@ -38,6 +38,10 @@ const semanticChecks = [
   //     "all predefined identifiers",
   //     "print ln(sqrt(sin(cos(hypot(π,1) + exp(5.5E2)))));",
   //   ],
+  // Test 14
+  // ["dot expression works", "cows.herd()"]
+  // Test 15
+  // ["dot call works", favoriteCow.name]
 ];
 
 const sample = `let x=sqrt(9) function f(x)=3*x while(true){x=3 print(0?f(x):2)}`;
