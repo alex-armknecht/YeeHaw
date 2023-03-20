@@ -148,9 +148,9 @@ export default function analyze(sourceCode) {
       return new core.Return(arg.rep());
     },
 
-    // _terminal() {
-    //   return this.sourceString;
-    // },
+    _terminal() {
+      return this.sourceString;
+    },
   });
 
   const match = YeeHawGrammar.match(sourceCode)
