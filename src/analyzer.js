@@ -22,10 +22,6 @@ function mustNotAlreadyBeDeclared(context, name) {
   must(!context.sees(name), `Identifier ${name} already declared`)
 }
 
-// function mustHaveBeenFound(entity, name) {
-//   must(entity, `Identifier ${name} not declared`)
-// }
-
 // Context Class inspired by Carlos
 class Context {
   constructor({ parent = null, locals = new Map(), inLoop = false, function: f = null }) {
@@ -38,11 +34,6 @@ class Context {
   add(name, entity) {
     mustNotAlreadyBeDeclared(this, name)
     this.locals.set(name, entity)
-  }
-  lookup(name) {
-    const entity = this.locals.get(name) || this.parent?.lookup(name)
-    mustHaveBeenFound(entity, name)
-    return entity
   }
   newChildContext(props) {
     return new Context({ ...this, ...props, parent: this, locals: new Map() })
@@ -62,7 +53,7 @@ export default function analyze(sourceCode) {
     },
 
     Params(params) {
-      return params.asIteration().rep();
+      return params.rep();
     },
 
     Block(_left, block, _right) {
@@ -137,9 +128,9 @@ export default function analyze(sourceCode) {
       return children.map((child) => child.rep());
     },
 
-    Loop(_corrale, _open, type, id, _colon, range, _close, body) {
-      return new core.Loop(type, id, range, body);
-    },
+    // Loop(_corrale, _open, type, id, _colon, range, _close, body) {
+    //   return new core.Loop(type, id, range, body);
+    // },
 
     FuncDec(_yeehaw, id, _open, params, _close, body) {
       // Inspired by Carlos

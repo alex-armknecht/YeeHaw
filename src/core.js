@@ -61,14 +61,6 @@ export class Function {
   }
 }
 
-// Throw an error message that takes advantage of Ohm's messaging
-// export function error(message, node) {
-//   if (node) {
-//     throw new Error(`${node.source.getLineAndColumnMessage()}${message}`);
-//   }
-//   throw new Error(message);
-// }
-
 // export class Loop {
 //   constructor(type, iterator, range, body) {
 //     Object.assign(this, { type, iterator, range, body });
