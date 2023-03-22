@@ -41,14 +41,25 @@ const semanticChecks = [
   // Test 14
   ["dot call works", "cows.herd()"],
   // Test 15
-  ["dot expression works", "favoriteCow.name"]
+  ["dot expression works", "favoriteCow.name"],
   // Test 16
   // ["while loops work", ""]
+  ["params", "holler(a,b,c)"]
+  
 ];
 
 // const sample = `let x=sqrt(9) function f(x)=3*x while(true){x=3 print(0?f(x):2)}`;
 const semanticErrors = [
   // ["non-distinct fields"]
+  // Test 1 
+  ["using undeclared identifiers", "holler x", /x has not been declared/],
+  //Test 2
+  ["a variable used as function", "lasso x = 1 x(2);", /Expected "." or "="/],
+  //Test 3
+  ["re-declared identifier", "lasso x = 1 lasso x = 2", /x has already been declared/],
+  //Test 4
+  ["return outside of function", "rodeo x"]
+  
 ]
 // const expected = `   1 | Program statements=[#2,#6,#10]
 //    2 | VariableDeclaration variable=#3 initializer=#4
@@ -77,12 +88,12 @@ describe("The analyzer", () => {
       assert.ok(analyze(source));
     });
   }
-  // for (const [scenario, source, errorMessagePattern] of semanticErrors) {
-  //   it(`throws on ${scenario}`, () => {
-  //     assert.throws(() => analyze(source), errorMessagePattern);
-  //   });
-  // }
-  //   it(`produces the expected graph for the simple sample program`, () => {
-  //     assert.deepEqual(util.format(analyze(sample)), expected);
-  //   });
+  for (const [scenario, source, errorMessagePattern] of semanticErrors) {
+    it(`throws on ${scenario}`, () => {
+      assert.throws(() => analyze(source), errorMessagePattern);
+    });
+  }
+    // it(`produces the expected graph for the simple sample program`, () => {
+    //   assert.deepEqual(util.format(analyze(sample)), expected);
+    // });
 });

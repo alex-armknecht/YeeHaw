@@ -52,9 +52,9 @@ export default function analyze(sourceCode) {
       return statement.rep();
     },
 
-    Params(params) {
-      return params.rep();
-    },
+     Params(params) {
+       return params.rep(); 
+     },
 
     Block(_left, block, _right) {
       return block.rep();
