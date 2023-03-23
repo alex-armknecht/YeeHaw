@@ -67,7 +67,9 @@ const semanticErrors = [
   //Test 4
   ["return outside of function", "rodeo x"],
   //Test 5
+  ["subtract strings", 'holler "a" - "b"', /Type mismatch/],
 ];
+
 // const expected = `   1 | Program statements=[#2,#6,#10]
 //    2 | VariableDeclaration variable=#3 initializer=#4
 //    3 | Variable name='x' readOnly=false
