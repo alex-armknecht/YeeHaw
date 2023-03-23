@@ -2,7 +2,7 @@
 
 # YeeHaw
 
-Howdy Partner! YeeHaw is a cowboy themed language where you can experience the freedom of the open plains. Learning a new language can be intimidating but YeeHaw was designed to be both easy and fun! A user will never feel defeated while debugging in YeeHaw due to our southern hospitality error messages. You will never have to deal with another dull programming language as long as you think you have what it takes to be a cowboy. YEE YEE!!
+Howdy Partner! YeeHaw is a cowboy themed language where you can experience the freedom of the open plains. Learning a new language can be intimidating but YeeHaw was designed to be both easy and fun! A user will never feel defeated while debugging in YeeHaw due to our southern hospitality error messages. You will never have to deal with another dull programming language as long as you think you have what it takes to be a cowboy. If you'd like to read more, feel free to check out our site at https://alex-armknecht.github.io/YeeHaw/. YEE YEE!!
 
 ## Features:
 
