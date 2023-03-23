@@ -18,6 +18,12 @@ export class VariableDeclaration {
   }
 }
 
+export class Variable {
+  constructor(name) {
+    Object.assign(this, { name });
+  }
+}
+
 export class AssignmentStatement {
   constructor(target, source) {
     Object.assign(this, { target, source });
@@ -49,27 +55,27 @@ export class Return {
 }
 
 export class FunctionDeclaration {
-  constructor(fun, params, body) {
-    Object.assign(this, { fun, params, body });
+  constructor(fun, body) {
+    Object.assign(this, { fun, body });
   }
 }
 
 export class Function {
   // Generated when processing a function declaration
-  constructor(name) {
-    Object.assign(this, {name})
+  constructor(name, params) {
+    Object.assign(this, { name, params });
   }
 }
 
 export class DotCall {
   constructor(id1, id2, params) {
-    Object.assign(this, { id1, id2, params })
+    Object.assign(this, { id1, id2, params });
   }
 }
 
 export class DotExp {
   constructor(id1, id2) {
-    Object.assign(this, { id1, id2 })
+    Object.assign(this, { id1, id2 });
   }
 }
 

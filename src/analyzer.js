@@ -15,42 +15,47 @@ export function error(message, node) {
 
 // CHECKING FUNCTIONS (need atleast 5 checking functions)
 function must(condition, message, errorLocation) {
-  if (!condition) error(message, errorLocation)
+  if (!condition) error(message, errorLocation);
 }
 
 function mustNotAlreadyBeDeclared(context, name) {
-  must(!context.sees(name), `Identifier ${name} already declared`)
+  must(!context.sees(name), `Identifier ${name} already declared`);
 }
 
 function mustHaveBeenFound(entity, name) {
-  must(entity, `Identifier ${name} not declared`)
+  must(entity, `Identifier ${name} not declared`);
 }
 
 // CONTEXT CLASS (inspired by Carlos)
 class Context {
-  constructor({ parent = null, locals = new Map(), inLoop = false, function: f = null }) {
-    Object.assign(this, { parent, locals, inLoop, function: f })
+  constructor({
+    parent = null,
+    locals = new Map(),
+    inLoop = false,
+    function: f = null,
+  }) {
+    Object.assign(this, { parent, locals, inLoop, function: f });
   }
   sees(name) {
     // Search "outward" through enclosing scopes
-    return this.locals.has(name) || this.parent?.sees(name)
+    return this.locals.has(name) || this.parent?.sees(name);
   }
   add(name, entity) {
-    mustNotAlreadyBeDeclared(this, name)
-    this.locals.set(name, entity)
+    mustNotAlreadyBeDeclared(this, name);
+    this.locals.set(name, entity);
   }
   lookup(name) {
-    const entity = this.locals.get(name) || this.parent?.lookup(name)
-    mustHaveBeenFound(entity, name)
-    return entity
+    const entity = this.locals.get(name) || this.parent?.lookup(name);
+    mustHaveBeenFound(entity, name);
+    return entity;
   }
   newChildContext(props) {
-    return new Context({ ...this, ...props, parent: this, locals: new Map() })
+    return new Context({ ...this, ...props, parent: this, locals: new Map() });
   }
 }
 
 export default function analyze(sourceCode) {
-  let context = new Context({})
+  let context = new Context({});
 
   const analyzer = YeeHawGrammar.createSemantics().addOperation("rep", {
     Program(body) {
@@ -61,9 +66,9 @@ export default function analyze(sourceCode) {
       return statement.rep();
     },
 
-     Params(params) {
-       return params.rep(); 
-     },
+    Params(params) {
+      return params.asIteration().rep();
+    },
 
     Block(_left, block, _right) {
       return block.rep();
@@ -73,8 +78,10 @@ export default function analyze(sourceCode) {
       return new core.PrintStatement(argument.rep());
     },
 
-    VarDec(_lasso, variable, _eq, initializer) {
-      return new core.VariableDeclaration(variable.rep(), initializer.rep());
+    VarDec(_lasso, id, _eq, initializer) {
+      const variable = new core.Variable(id.rep());
+      context.add(id.rep(), variable);
+      return new core.VariableDeclaration(variable, initializer.rep());
     },
 
     AssignStmt(target, _eq, source) {
@@ -98,13 +105,15 @@ export default function analyze(sourceCode) {
     },
 
     Var(id) {
-      return id.rep();
+      const entity = context.lookup(id.rep());
+      mustHaveBeenFound(entity);
+      return entity;
     },
 
     Exp_equal(left, _plus, right) {
       return new core.BinaryExpression("+", left.rep(), right.rep());
     },
-    
+
     Exp0_add(left, _plus, right) {
       return new core.BinaryExpression("+", left.rep(), right.rep());
     },
@@ -143,16 +152,17 @@ export default function analyze(sourceCode) {
 
     FuncDec(_yeehaw, id, _open, params, _close, body) {
       // Inspired by Carlos
-      const paramReps = params.asIteration().rep()
-      const f = new core.Function(id.sourceString)
-      context = context.newChildContext({inLoop: false, function: f})
-      for (const p of paramReps) 
-        context.add(p)
-      const b = body.rep()
-      context = context.parent
-      return new core.FunctionDeclaration(id.sourceString, paramReps, b)
+      const paramNames = params.rep();
+      const parameters = paramNames.map((name) => new core.Variable(name));
+      const f = new core.Function(id.sourceString, parameters);
+      context.add(id.rep(), f);
+      context = context.newChildContext({ inLoop: false, function: f });
+      for (const p of parameters) context.add(p.name, p);
+      const b = body.rep();
+      context = context.parent;
+      return new core.FunctionDeclaration(f, b);
     },
-    
+
     Return(_rodeo, arg) {
       return new core.Return(arg.rep());
     },
@@ -162,16 +172,15 @@ export default function analyze(sourceCode) {
     },
 
     DotCall(id1, _dot, id2, _open, params, _close) {
-      return new core.DotCall(id1.rep(), id2.rep(), params.asIteration().rep())
+      return new core.DotCall(id1.rep(), id2.rep(), params.asIteration().rep());
     },
 
     DotExp(id1, _dot, id2) {
-      return new core.DotExp(id1.rep(), id2.rep())
-    }
-      
+      return new core.DotExp(id1.rep(), id2.rep());
+    },
   });
 
-  const match = YeeHawGrammar.match(sourceCode)
-  if (!match.succeeded()) error(match.message)
-  return analyzer(match).rep()
+  const match = YeeHawGrammar.match(sourceCode);
+  if (!match.succeeded()) error(match.message);
+  return analyzer(match).rep();
 }

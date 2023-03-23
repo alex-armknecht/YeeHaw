@@ -9,8 +9,8 @@ YeeHaw {
             | DotCall 
             | DotExp
             
-  PrintStmt   = holler  Exp  
-  VarDec      = lasso Var "=" (Exp | Exp2) 
+  PrintStmt   = holler Exp  
+  VarDec      = lasso id "=" (Exp | Exp2) 
   AssignStmt  = id "=" Exp 
   IfStmt      = ifin Exp hit Statement+ miss Statement+ fine  --else
               | ifin Exp hit Statement+ fine                  --noelse
@@ -19,7 +19,7 @@ YeeHaw {
   Block 	    = "{" Statement* "}"
   FuncDec 	  = yeehaw id"(" Params ")" Block
   ConstBlock  = "{" Constructor Statement* "}"
-  ClassDec	  = cowhide id ConstBlock 
+  ClassDec	  = cowhide id ConstBlock
   Constructor = yeehaw "***"cactus"***""(" Params ")" Block
   DotCall	  = id"."id"(" Params ")"
   DotExp	  = id"."id

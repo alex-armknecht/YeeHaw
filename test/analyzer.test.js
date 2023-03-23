@@ -4,7 +4,10 @@ import analyze, { error } from "../src/analyzer.js";
 
 const semanticChecks = [
   // Test 1
-  ["variable declarations work", 'lasso name = "Woody" lasso age = 20 lasso bullseye = hit'],
+  [
+    "variable declarations work",
+    'lasso name = "Woody" lasso age = 20 lasso bullseye = hit',
+  ],
   // Test 2
   // ["class declaration with constructor works", 'cowhide myClass{ yeehaw ***cactus***(){} yeehaw sayHowdy(){}}'],
   // Test 3
@@ -14,7 +17,7 @@ const semanticChecks = [
   // Test 5
   ["string literals work", 'lasso horsename = "Jerry"'],
   // Test 6
-  ["binary expressions work", "lasso x = 5 y = 2 lasso z = x - y "],
+  ["binary expressions work", "lasso x = 5 lasso y = 2 lasso z = x - y "],
   // Test 7
   [
     "if statement without else works",
@@ -44,24 +47,27 @@ const semanticChecks = [
   ["dot expression works", "favoriteCow.name"],
   // Test 16
   // ["while loops work", ""]
-  ["params", "holler(a,b,c)"]
-  
+  ["holler", 'holler("YEEE_HAWWW")'],
+  ["can find globals", "lasso x = 1 yeehaw f() {holler x}"],
 ];
 
 // const sample = `let x=sqrt(9) function f(x)=3*x while(true){x=3 print(0?f(x):2)}`;
 const semanticErrors = [
   // ["non-distinct fields"]
-  // Test 1 
-  ["using undeclared identifiers", "holler x", /x has not been declared/],
+  // Test 1
+  ["using undeclared identifiers", "holler x", /Identifier x not declared/],
   //Test 2
   ["a variable used as function", "lasso x = 1 x(2);", /Expected "." or "="/],
   //Test 3
-  ["re-declared identifier", "lasso x = 1 lasso x = 2", /Identifier x already declared/],
+  [
+    "re-declared identifier",
+    "lasso x = 1 lasso x = 2",
+    /Identifier x already declared/,
+  ],
   //Test 4
   ["return outside of function", "rodeo x"],
   //Test 5
-  ["return outside of guh", " x hshshs e" , /Something/],
-]
+];
 // const expected = `   1 | Program statements=[#2,#6,#10]
 //    2 | VariableDeclaration variable=#3 initializer=#4
 //    3 | Variable name='x' readOnly=false
@@ -94,7 +100,7 @@ describe("The analyzer", () => {
       assert.throws(() => analyze(source), errorMessagePattern);
     });
   }
-    // it(`produces the expected graph for the simple sample program`, () => {
-    //   assert.deepEqual(util.format(analyze(sample)), expected);
-    // });
+  // it(`produces the expected graph for the simple sample program`, () => {
+  //   assert.deepEqual(util.format(analyze(sample)), expected);
+  // });
 });
