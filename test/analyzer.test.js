@@ -56,10 +56,11 @@ const semanticErrors = [
   //Test 2
   ["a variable used as function", "lasso x = 1 x(2);", /Expected "." or "="/],
   //Test 3
-  ["re-declared identifier", "lasso x = 1 lasso x = 2", /x has already been declared/],
+  ["re-declared identifier", "lasso x = 1 lasso x = 2", /Identifier x already declared/],
   //Test 4
-  ["return outside of function", "rodeo x"]
-  
+  ["return outside of function", "rodeo x"],
+  //Test 5
+  ["return outside of guh", " x hshshs e" , /Something/],
 ]
 // const expected = `   1 | Program statements=[#2,#6,#10]
 //    2 | VariableDeclaration variable=#3 initializer=#4
