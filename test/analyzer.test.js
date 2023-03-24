@@ -65,9 +65,9 @@ const semanticErrors = [
     /Identifier x already declared/,
   ],
   //Test 4
-  ["return outside of function", "rodeo x"],
+  ["return outside of function", "rodeo", /Some error/],
   //Test 5
-  ["subtract strings", 'holler "a" - "b"', /Type mismatch/],
+  ["subtract strings", 'holler "a" - "b"', /Expected a number/],
 ];
 
 // const expected = `   1 | Program statements=[#2,#6,#10]

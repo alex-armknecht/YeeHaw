@@ -5,6 +5,14 @@ import * as core from "./core.js";
 
 const YeeHawGrammar = ohm.grammar(fs.readFileSync("src/YeeHaw.ohm"));
 
+const INT = core.Type.INT
+const FLOAT = core.Type.FLOAT
+const STRING = core.Type.STRING
+const BOOLEAN = core.Type.BOOLEAN
+const ANY = core.Type.ANY
+const VOID = core.Type.VOID
+
+
 // Throw an error message that takes advantage of Ohm's messaging
 export function error(message, node) {
   if (node) {
@@ -24,6 +32,10 @@ function mustNotAlreadyBeDeclared(context, name) {
 
 function mustHaveBeenFound(entity, name) {
   must(entity, `Identifier ${name} not declared`);
+}
+
+function mustHaveNumericType(e, at) {
+  must([INT, FLOAT].includes(e.type), "Expected a number", at)
 }
 
 // CONTEXT CLASS (inspired by Carlos)
@@ -79,9 +91,10 @@ export default function analyze(sourceCode) {
     },
 
     VarDec(_lasso, id, _eq, initializer) {
-      const variable = new core.Variable(id.rep());
+      const e = initializer.rep();
+      const variable = new core.Variable(id.rep(), e.type);
       context.add(id.rep(), variable);
-      return new core.VariableDeclaration(variable, initializer.rep());
+      return new core.VariableDeclaration(variable, e);
     },
 
     AssignStmt(target, _eq, source) {
@@ -115,10 +128,14 @@ export default function analyze(sourceCode) {
     },
 
     Exp0_add(left, _plus, right) {
+      mustHaveNumericType(left.rep());
+      mustHaveNumericType(right.rep());
       return new core.BinaryExpression("+", left.rep(), right.rep());
     },
 
     Exp0_sub(left, _plus, right) {
+      mustHaveNumericType(left.rep());
+      mustHaveNumericType(right.rep());
       return new core.BinaryExpression("-", left.rep(), right.rep());
     },
 
@@ -179,7 +196,9 @@ export default function analyze(sourceCode) {
       return new core.DotExp(id1.rep(), id2.rep());
     },
   });
-
+  // for (const [name, type] of Object.entries(stdlib.contents)) {
+  //   context.add(name, type)
+  // }
   const match = YeeHawGrammar.match(sourceCode);
   if (!match.succeeded()) error(match.message);
   return analyzer(match).rep();
