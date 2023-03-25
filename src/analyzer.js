@@ -35,7 +35,10 @@ function mustHaveBeenFound(entity, name) {
 }
 
 function mustHaveNumericType(e, at) {
-  must([INT, FLOAT].includes(e.type), "Expected a number", at)
+  must([INT, FLOAT].includes(e.type), "Expected a number", at);
+}
+function mustBeInsideFunction(context, at) {
+  must(context.function, "Rodeo must be inside a function", at);
 }
 
 // CONTEXT CLASS (inspired by Carlos)
@@ -163,9 +166,9 @@ export default function analyze(sourceCode) {
       return children.map((child) => child.rep());
     },
 
-    // Loop(_corrale, _open, type, id, _colon, range, _close, body) {
-    //   return new core.Loop(type, id, range, body);
-    // },
+     Loop(_corrale, _open, id, _colon, range, _close, body) {
+      return new core.Loop(id, range, body);
+     },
 
     FuncDec(_yeehaw, id, _open, params, _close, body) {
       // Inspired by Carlos
@@ -181,6 +184,7 @@ export default function analyze(sourceCode) {
     },
 
     Return(_rodeo, arg) {
+      mustBeInsideFunction(context, _rodeo);
       return new core.Return(arg.rep());
     },
 

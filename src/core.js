@@ -110,11 +110,11 @@ export class DotExp {
   }
 }
 
-// export class Loop {
-//   constructor(type, iterator, range, body) {
-//     Object.assign(this, { type, iterator, range, body });
-//   }
-// }
+ export class Loop {
+    constructor(iterator, range, body) {
+     Object.assign(this, {iterator, range, body });
+   }
+ }
 
 // Return a compact and pretty string representation of the node graph,
 // taking care of cycles. Written here from scratch because the built-in

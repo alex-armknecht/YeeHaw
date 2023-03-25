@@ -8,6 +8,7 @@ YeeHaw {
             | FuncDec
             | DotCall 
             | DotExp
+            | Loop
             
   PrintStmt   = holler Exp  
   VarDec      = lasso id "=" (Exp | Exp2) 
@@ -24,7 +25,7 @@ YeeHaw {
   DotCall	  = id"."id"(" Params ")"
   DotExp	  = id"."id
 
-  Loop      = corrale "(" Type id ":" Exp ")" Block
+  Loop      = corrale "("id ":" Exp ")" Block
   Type      = id
 
   id        = ~keyword idchar+

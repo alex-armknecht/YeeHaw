@@ -29,13 +29,14 @@ const semanticChecks = [
     "lasso x = 1 lasso y = 1 ifin x - y == 0 hit holler x miss holler 1 fine",
   ],
   // Test 9
-  ["return statements work", "lasso z = 2 + 2 rodeo z"],
+  ["return statements", "yeehaw func(z) { rodeo z }"],
+
   // Test 10
   ["function declaration works", "yeehaw square(num) { rodeo num * num }"],
   // Test 11
   // ["constructor with params works", "cowhide myClass{ yeehaw ***cactus***(myVar1, myVar2){} yeehaw sayHowdy(){}}"],
   // Test 12
-  // ["for loops work", "corrale (x : 5) {holler x} "],
+  ["for loops", "corrale (x : 5) {holler x} "],
   // Test 13
   //   [
   //     "all predefined identifiers",
@@ -65,9 +66,10 @@ const semanticErrors = [
     /Identifier x already declared/,
   ],
   //Test 4
-  ["return outside of function", "rodeo", /Some error/],
+  ["return outside of function", "rodeo 1", /Rodeo must be inside a function/],
   //Test 5
   ["subtract strings", 'holler "a" - "b"', /Expected a number/],
+  ["adding strings", 'holler "a" + "b" ', /Expected a number/]
 ];
 
 // const expected = `   1 | Program statements=[#2,#6,#10]
