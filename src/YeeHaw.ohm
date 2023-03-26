@@ -8,6 +8,7 @@ YeeHaw {
             | FuncDec
             | DotCall 
             | DotExp
+            | skedaddle
             | Loop
             
   PrintStmt   = holler Exp  
@@ -31,7 +32,7 @@ YeeHaw {
   id        = ~keyword idchar+
   idchar    = letter | "_"
   
-  keyword   = lasso | holler | ifin | hit | miss | fine | yeehaw | rodeo | corrale | cowhide | cactus
+  keyword   = lasso | holler | ifin | hit | miss | fine | yeehaw | rodeo | corrale | cowhide | cactus | skedaddle
   Var       = id
  
   Exp       = Exp0 "==" Exp0  --equal
@@ -64,6 +65,7 @@ YeeHaw {
   corrale   = "corrale" ~idchar
   cowhide   = "cowhide" ~idchar
   cactus    = "cactus" ~idchar
+  skedaddle = "skedaddle" ~idchar
 
   numeral   = digit+ ("." digit+)?
   strlit    = "\"" (~"\"" any)* "\""

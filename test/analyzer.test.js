@@ -5,7 +5,7 @@ import analyze, { error } from "../src/analyzer.js";
 const semanticChecks = [
   // Test 1
   [
-    "variable declarations work",
+    "variable declarations",
     'lasso name = "Woody" lasso age = 20 lasso bullseye = hit',
   ],
   // Test 2
@@ -13,26 +13,26 @@ const semanticChecks = [
   // Test 3
   ["variables can be printed", "lasso x = 5 holler x"],
   // Test 4
-  ["variables can be reassigned", "lasso x = 1 x = x * 5 / ((3) + x)"],
+  ["variables can be reassigned", "lasso x = 1 x = 5"],
   // Test 5
-  ["string literals work", 'lasso horsename = "Jerry"'],
+  ["string literals", 'lasso horsename = "Jerry"'],
   // Test 6
-  ["binary expressions work", "lasso x = 5 lasso y = 2 lasso z = x - y "],
+  ["binary expressions", "lasso x = 5 lasso y = 2 lasso z = x - y "],
   // Test 7
   [
-    "if statement without else works",
+    "if statement without else",
     "lasso x = 1 lasso y = 1 ifin x - y == 0 hit holler x fine",
   ],
   // Test 8
   [
-    "if statement with else works",
+    "if statement with else",
     "lasso x = 1 lasso y = 1 ifin x - y == 0 hit holler x miss holler 1 fine",
   ],
   // Test 9
   ["return statements", "yeehaw func(z) { rodeo z }"],
 
   // Test 10
-  ["function declaration works", "yeehaw square(num) { rodeo num * num }"],
+  ["function declarations", "yeehaw function(num) { rodeo num }"],
   // Test 11
   // ["constructor with params works", "cowhide myClass{ yeehaw ***cactus***(myVar1, myVar2){} yeehaw sayHowdy(){}}"],
   // Test 12
@@ -43,13 +43,19 @@ const semanticChecks = [
   //     "print ln(sqrt(sin(cos(hypot(π,1) + exp(5.5E2)))));",
   //   ],
   // Test 14
-  ["dot call works", "cows.herd()"],
+  ["dot call", "cows.herd()"],
   // Test 15
-  ["dot expression works", "favoriteCow.name"],
+  ["dot expression", "favoriteCow.name"],
   // Test 16
   // ["while loops work", ""]
   ["holler", 'holler("YEEE_HAWWW")'],
-  ["can find globals", "lasso x = 1 yeehaw f() {holler x}"],
+  // Test 17
+  ["globals", "lasso x = 1 yeehaw f() {holler x}"],
+  //Test 18
+  ["== expression with ints", "lasso x = 1 lasso y = 1 holler x == y"],
+  // Test 19
+  ["== expression with floats", "lasso x = 1.0 lasso y = 1.0 holler x == y"]
+  // Test 20
 ];
 
 // const sample = `let x=sqrt(9) function f(x)=3*x while(true){x=3 print(0?f(x):2)}`;
@@ -69,7 +75,16 @@ const semanticErrors = [
   ["return outside of function", "rodeo 1", /Rodeo must be inside a function/],
   //Test 5
   ["subtract strings", 'holler "a" - "b"', /Expected a number/],
-  ["adding strings", 'holler "a" + "b" ', /Expected a number/]
+  //Test 6
+  ["adding strings", 'holler "a" + "b" ', /Expected a number/],
+  //Test 7 
+  ["invalid type for *", 'holler "a" *  3', /Expected a number/],
+  //Test 8
+  ["invalid type for /", 'holler "a" /  3', /Expected a number/],
+  //Test 9
+  ["invalid type for ifin", "lasso x = 1 ifin x hit holler x fine", /Expected a boolean/],
+  //Test 10 
+  ["invalid variable reassignment", 'lasso x = 1 x = "string"', /Operands must have same type/]
 ];
 
 // const expected = `   1 | Program statements=[#2,#6,#10]

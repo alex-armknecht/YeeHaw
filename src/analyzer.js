@@ -5,6 +5,7 @@ import * as core from "./core.js";
 
 const YeeHawGrammar = ohm.grammar(fs.readFileSync("src/YeeHaw.ohm"));
 
+// Change to cowboy names later
 const INT = core.Type.INT
 const FLOAT = core.Type.FLOAT
 const STRING = core.Type.STRING
@@ -37,9 +38,25 @@ function mustHaveBeenFound(entity, name) {
 function mustHaveNumericType(e, at) {
   must([INT, FLOAT].includes(e.type), "Expected a number", at);
 }
+
+function mustHaveTypeInt(e, at) {
+  must(e.type === INT, "Expected an integer", at);
+}
+
+function mustHaveSameType(e1, e2, at) {
+  console.log(e1.type)
+  console.log(e2.type)
+  must(e1.type === e2.type, "Operands must have same type", at)
+}
+function mustHaveBooleanType(e, at) {
+  must(e.type === BOOLEAN, "Expected a boolean", at);
+}
 function mustBeInsideFunction(context, at) {
   must(context.function, "Rodeo must be inside a function", at);
 }
+// function mustBeInLoop(context, at) {
+//   must(context.inLoop, "Break can only appear in a loop", at)
+// }
 
 // CONTEXT CLASS (inspired by Carlos)
 class Context {
@@ -101,10 +118,14 @@ export default function analyze(sourceCode) {
     },
 
     AssignStmt(target, _eq, source) {
+      console.log(target.rep())
+      console.log(source.rep())
+      mustHaveSameType(target.rep(), source.rep())
       return new core.AssignmentStatement(target.rep(), source.rep());
     },
 
     IfStmt_else(_ifin, test, _hit, consequent, _miss, alternate, _fine) {
+      mustHaveBooleanType(test.rep())
       return new core.IfStatement(
         test.rep(),
         consequent.rep(),
@@ -113,6 +134,7 @@ export default function analyze(sourceCode) {
     },
 
     IfStmt_noelse(_ifin, test, _hit, consequent, _fine) {
+      mustHaveBooleanType(test.rep())
       return new core.IfStatement(test.rep(), consequent.rep(), []);
     },
 
@@ -127,27 +149,31 @@ export default function analyze(sourceCode) {
     },
 
     Exp_equal(left, _plus, right) {
-      return new core.BinaryExpression("+", left.rep(), right.rep());
+      return new core.BinaryExpression("==", left.rep(), right.rep(), BOOLEAN);
     },
 
     Exp0_add(left, _plus, right) {
       mustHaveNumericType(left.rep());
       mustHaveNumericType(right.rep());
-      return new core.BinaryExpression("+", left.rep(), right.rep());
+      return new core.BinaryExpression("+", left.rep(), right.rep(), left.rep().type);
     },
 
     Exp0_sub(left, _plus, right) {
       mustHaveNumericType(left.rep());
       mustHaveNumericType(right.rep());
-      return new core.BinaryExpression("-", left.rep(), right.rep());
+      return new core.BinaryExpression("-", left.rep(), right.rep(), left.rep().type);
     },
 
     Exp1_div(left, _plus, right) {
-      return new core.BinaryExpression("/", left.rep(), right.rep());
+      mustHaveNumericType(left.rep());
+      mustHaveNumericType(right.rep());
+      return new core.BinaryExpression("/", left.rep(), right.rep(), left.rep().type);
     },
 
     Exp1_mul(left, _plus, right) {
-      return new core.BinaryExpression("*", left.rep(), right.rep());
+      mustHaveNumericType(left.rep());
+      mustHaveNumericType(right.rep());
+      return new core.BinaryExpression("*", left.rep(), right.rep(), left.rep().type);
     },
 
     Term_parens(_open, expression, _close) {
@@ -167,6 +193,8 @@ export default function analyze(sourceCode) {
     },
 
      Loop(_corrale, _open, id, _colon, range, _close, body) {
+      context = context.newChildContext({ inLoop: true });
+      context = context.parent
       return new core.Loop(id, range, body);
      },
 
@@ -182,6 +210,11 @@ export default function analyze(sourceCode) {
       context = context.parent;
       return new core.FunctionDeclaration(f, b);
     },
+    
+    // Statement_break(_Skedaddle) {
+    //   mustBeInLoop(context)
+    //   return new core.BreakStatement();
+    // },
 
     Return(_rodeo, arg) {
       mustBeInsideFunction(context, _rodeo);
@@ -200,9 +233,7 @@ export default function analyze(sourceCode) {
       return new core.DotExp(id1.rep(), id2.rep());
     },
   });
-  // for (const [name, type] of Object.entries(stdlib.contents)) {
-  //   context.add(name, type)
-  // }
+
   const match = YeeHawGrammar.match(sourceCode);
   if (!match.succeeded()) error(match.message);
   return analyzer(match).rep();

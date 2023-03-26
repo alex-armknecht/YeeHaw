@@ -68,8 +68,8 @@ export class IfStatement {
 }
 
 export class BinaryExpression {
-  constructor(op, left, right) {
-    Object.assign(this, { left, right });
+  constructor(op, left, right, type) {
+    Object.assign(this, {op, left, right, type });
   }
 }
 
@@ -115,6 +115,10 @@ export class DotExp {
      Object.assign(this, {iterator, range, body });
    }
  }
+
+//  export class BreakStatement {
+//   // Intentionally empty
+// }
 
 // Return a compact and pretty string representation of the node graph,
 // taking care of cycles. Written here from scratch because the built-in
