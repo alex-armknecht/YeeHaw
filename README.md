@@ -224,4 +224,18 @@ corrale (Cow cow : herd) {
 </tr>
 </table>
 
+## List of Static Semantic Errors
+- Use of undeclared identifiers.
+- Variable used as a function.
+- Redeclaring an already declared identifier.
+- Value returned outside of function.
+- Subtracting two strings.
+- Adding two strings.
+- Multiplying two strings.
+- Dividing two strings.
+- Invalid type used for ifin condition.
+- Range in loop is floating point.
+- Range in loop is a string.
+- Variable used within a loop is declared and initialized outside of the loop.
+
 ## Authors: [Anna](https://github.com/agarren20), [Alex](https://github.com/alex-armknecht), [Arusha](https://github.com/arusha-r), [Saarah](https://github.com/speer987), [Adam](https://github.com/atrafec1), & [Hunter](https://github.com/hunterkrasa)
