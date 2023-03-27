@@ -16,8 +16,8 @@ export class Program {
 export class Type {
   // Type of all basic type int, float, string, etc. and superclass of others
   static BOOLEAN = new Type("boolean")
-  static INT = new Type("int")
-  static FLOAT = new Type("float")
+  // static INT = new Type("int")
+  static NUMBER = new Type("number")
   static STRING = new Type("string")
   static VOID = new Type("void")
   static ANY = new Type("any")
@@ -154,6 +154,5 @@ Program.prototype[util.inspect.custom] = function () {
 };
 
 String.prototype.type = Type.STRING
-Number.prototype.type = Type.FLOAT
-BigInt.prototype.type = Type.INT
+Number.prototype.type = Type.NUMBER
 Boolean.prototype.type = Type.BOOLEAN
