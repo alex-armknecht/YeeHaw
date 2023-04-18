@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "ohm-js": "^16.6.0",
-    "stdlib": "^0.6.0"
+    "stdlib": "^0.1.0"
   },
   "directories": {
     "doc": "docs",
