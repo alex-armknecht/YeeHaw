@@ -3,10 +3,10 @@
 // Invoke generate(program) with the program node to get back the JavaScript
 // translation as a string.
 
-import { IfStatement, Type } from "./core.js"
+import { IfStatement, Type } from "./core.js";
 
 export default function generate(program) {
-  const output = []
+  const output = [];
 
   // const standardFunctions = new Map([
   //   [standardLibrary.print, x => `console.log(${x})`],
@@ -23,29 +23,32 @@ export default function generate(program) {
   // etc. This is because "switch", for example, is a legal name in Carlos,
   // but not in JS. So, the Carlos variable "switch" must become something
   // like "switch_1". We handle this by mapping each name to its suffix.
-  const targetName = (mapping => {
-    return entity => {
+  const targetName = ((mapping) => {
+    return (entity) => {
       if (!mapping.has(entity)) {
-        mapping.set(entity, mapping.size + 1)
+        mapping.set(entity, mapping.size + 1);
       }
-      return `${entity.name ?? entity.description}_${mapping.get(entity)}`
-    }
-  })(new Map())
+      return `${entity.name ?? entity.description}_${mapping.get(entity)}`;
+    };
+  })(new Map());
 
   function gen(node) {
-    return generators[node.constructor.name](node)
+    return generators[node.constructor.name](node);
   }
 
   const generators = {
     // Key idea: when generating an expression, just return the JS string; when
     // generating a statement, write lines of translated JS to the output array.
     Program(p) {
-      gen(p.statements)
+      gen(p.statements);
+    },
+    PrintStatement(s) {
+      output.push(`console.log(${gen(s.argument)})`);
     },
     VariableDeclaration(d) {
       // We don't care about const vs. let in the generated code! The analyzer has
       // already checked that we never updated a const, so let is always fine.
-      output.push(`let ${gen(d.variable)} = ${gen(d.initializer)};`)
+      output.push(`let ${gen(d.variable)} = ${gen(d.initializer)};`);
     },
     // TypeDeclaration(d) {
     //   // The only type declaration in Carlos is the struct! Becomes a JS class.
@@ -64,19 +67,19 @@ export default function generate(program) {
     //   return targetName(f)
     // },
     FunctionDeclaration(d) {
-      output.push(`function ${gen(d.fun)}(${gen(d.params).join(", ")}) {`)
-      gen(d.body)
-      output.push("}")
+      output.push(`function ${gen(d.fun)}(${gen(d.params).join(", ")}) {`);
+      gen(d.body);
+      output.push("}");
     },
     Variable(v) {
       // Standard library constants just get special treatment
       if (v === standardLibrary.π) {
-        return "Math.PI"
+        return "Math.PI";
       }
-      return targetName(v)
+      return targetName(v);
     },
     Function(f) {
-      return targetName(f)
+      return targetName(f);
     },
     // Increment(s) {
     //   output.push(`${gen(s.variable)}++;`)
@@ -85,7 +88,7 @@ export default function generate(program) {
     //   output.push(`${gen(s.variable)}--;`)
     // },
     Assignment(s) {
-      output.push(`${gen(s.target)} = ${gen(s.source)};`)
+      output.push(`${gen(s.target)} = ${gen(s.source)};`);
     },
     // BreakStatement(s) {
     //   output.push("break;")
@@ -97,15 +100,15 @@ export default function generate(program) {
     //   output.push("return;")
     // },
     IfStatement(s) {
-      output.push(`if (${gen(s.test)}) {`)
-      gen(s.consequent)
+      output.push(`if (${gen(s.test)}) {`);
+      gen(s.consequent);
       if (s.alternate instanceof IfStatement) {
-        output.push("} else")
-        gen(s.alternate)
+        output.push("} else");
+        gen(s.alternate);
       } else {
-        output.push("} else {")
-        gen(s.alternate)
-        output.push("}")
+        output.push("} else {");
+        gen(s.alternate);
+        output.push("}");
       }
     },
     // ShortIfStatement(s) {
@@ -141,8 +144,8 @@ export default function generate(program) {
     //   return `((${gen(e.test)}) ? (${gen(e.consequent)}) : (${gen(e.alternate)}))`
     // },
     BinaryExpression(e) {
-      const op = { "==": "===", "!=": "!==" }[e.op] ?? e.op
-      return `(${gen(e.left)} ${op} ${gen(e.right)})`
+      const op = { "==": "===", "!=": "!==" }[e.op] ?? e.op;
+      return `(${gen(e.left)} ${op} ${gen(e.right)})`;
     },
     // UnaryExpression(e) {
     //   const operand = gen(e.operand)
@@ -188,24 +191,28 @@ export default function generate(program) {
     //   return `new ${gen(c.callee)}(${gen(c.args).join(", ")})`
     // },
     Number(e) {
-      return e
+      return e;
     },
     // BigInt(e) {
     //   return e
     // },
     Boolean(e) {
-      return e
+      return e;
     },
     String(e) {
-      return e
+      return e;
     },
-    // Array(a) {
-    //   return a.map(gen)
-    // },
-  }
+    StringLiteral(e) {
+      return `"${e.contents}"`;
+    },
+    Array(a) {
+      return a.map(gen);
+    },
+  };
 
-  let randomCalled = false
-  gen(program)
-  if (randomCalled) output.push("function _r(a){return a[~~(Math.random()*a.length)]}")
-  return output.join("\n")
+  let randomCalled = false;
+  gen(program);
+  if (randomCalled)
+    output.push("function _r(a){return a[~~(Math.random()*a.length)]}");
+  return output.join("\n");
 }

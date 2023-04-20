@@ -1,2 +1,2 @@
 holler "Howdy, partner."
-holler x + 2 - 3
+holler 2 - 3
