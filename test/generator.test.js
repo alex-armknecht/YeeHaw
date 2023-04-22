@@ -72,8 +72,11 @@ const fixtures = [
 
 const sampleProgram = "holler 0";
 
-describe("The generator", () => {
-  it("knows how to call the generator", () => {
-    assert.throws(() => generate());
-  });
+describe("The code generator", () => {
+  for (const fixture of fixtures) {
+    it(`produces expected js output for the ${fixture.name} program`, () => {
+      const actual = generate(optimize(analyze(fixture.source)));
+      assert.deepEqual(actual, fixture.expected);
+    });
+  }
 });
