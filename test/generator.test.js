@@ -25,8 +25,47 @@ const fixtures = [
       holler(x)
     `,
     expected: dedent`
-      let x = 1
+      let x = 1;
       console.log(x);
+    `,
+  },
+  {
+    name: "FuncDec", //for lines 70-72
+    source: `
+      yeehaw multiply(firstNum, secondNum){
+        rodeo firstNum * secondNum
+      }
+      holler(multiply(5,10))
+    `,
+    expected: dedent`
+      function multiply(firstNum, secondNum) {
+        return firstNum * secondNum ;
+      }
+      console.log(multiple(5,10)) ;
+    `,
+  },
+  {
+    name: "var", //for lines 75-79
+    source: `
+      lasso cowName = "bessy"
+    `,
+    expected: dedent`
+      let cowName =  "bessy";
+    `,
+  },
+  {
+    name: "func", //for lines 82
+    source: `
+      yeehaw square(Num){
+        rodeo Num * Num
+      }
+      square(5)
+    `,
+    expected: dedent`
+      function square(Num) {
+        return Num * Num ;
+      }
+      square(5);
     `,
   },
 ];

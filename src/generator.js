@@ -73,9 +73,9 @@ export default function generate(program) {
     },
     Variable(v) {
       // Standard library constants just get special treatment
-      if (v === standardLibrary.π) {
-        return "Math.PI";
-      }
+      // if (v === standardLibrary.π) {
+      //   return "Math.PI";
+      // }
       return targetName(v);
     },
     Function(f) {
