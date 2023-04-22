@@ -18,6 +18,17 @@ const fixtures = [
       console.log(1);
     `,
   },
+  {
+    name: "varDec", //for lines 49-51
+    source: `
+      lasso x = 1
+      holler(x)
+    `,
+    expected: dedent`
+      let x = 1
+      console.log(x);
+    `,
+  },
 ];
 
 const sampleProgram = "holler 0";
