@@ -15,7 +15,7 @@ const fixtures = [
       holler(1)
     `,
     expected: dedent`
-      console.log(1);
+      console.log(1)
     `,
   },
   {
@@ -25,8 +25,8 @@ const fixtures = [
       holler(x)
     `,
     expected: dedent`
-      let x = 1;
-      console.log(x);
+      let x_1 = 1;
+      console.log(x_1)
     `,
   },
   {
@@ -35,13 +35,15 @@ const fixtures = [
       yeehaw multiply(firstNum, secondNum){
         rodeo firstNum * secondNum
       }
-      holler(multiply(5,10))
+      lasso answer = multiply(5,10)
+      holler(answer)
     `,
     expected: dedent`
       function multiply(firstNum, secondNum) {
-        return firstNum * secondNum ;
+        return firstNum * secondNum
       }
-      console.log(multiple(5,10)) ;
+      let answer = multiply(5,10);
+      console.log(answer)
     `,
   },
   {
@@ -50,22 +52,78 @@ const fixtures = [
       lasso cowName = "bessy"
     `,
     expected: dedent`
-      let cowName =  "bessy";
+      let cowName_1 = "bessy";
     `,
   },
   {
     name: "func", //for lines 82
     source: `
-      yeehaw square(Num){
-        rodeo Num * Num
+      yeehaw scream(){
+        holler("AAAAAA")
       }
-      square(5)
+      scream._()
     `,
     expected: dedent`
-      function square(Num) {
-        return Num * Num ;
+      function scream() {
+        console.log("AAAAAA");
       }
-      square(5);
+      scream();
+    `,
+  },
+  {
+    name: "ass", //for lines 91
+    source: `
+      lasso x = 1
+      x = x + 5
+      holler(x)
+    `,
+    expected: dedent`
+      let x = 1;
+      x = x + 5;
+      console.log(x);
+    `,
+  },
+  {
+    name: "ifstmt", //103-112
+    source: `
+      lasso x = 1
+      lasso y = 1
+      ifin x - y == 0 hit holler x fine
+    `,
+    expected: dedent`
+      let x_1 = 1;
+      let y_2 = 1;
+      if(x_1 - y_2 == 0) {
+        console.log(x);
+      }   
+    `,
+  },
+  {
+    name: "ifelsestmt", //for lines 106-107
+    source: `
+      lasso x = 1
+      lasso y = 5
+      ifin x - y == 0 hit holler x miss holler y fine
+    `,
+    expected: dedent`
+      let x_1 = 1;
+      let y_2 = 5;
+      if (((x_1 - y_2) === 0)) {
+        console.log(x_1)
+      } else {
+        console.log(y_2)
+      }
+    `,
+  },
+  {
+    name: "bool", //for lines 200-203
+    source: `
+      lasso bullseye = hit
+      holler(bullseye)
+    `,
+    expected: dedent`
+      let bullseye_1 = true;
+      console.log(bullseye_1)
     `,
   },
 ];

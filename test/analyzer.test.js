@@ -23,7 +23,7 @@ const semanticChecks = [
     "if statement without else",
     "lasso x = 1 lasso y = 1 ifin x - y == 0 hit holler x fine",
   ],
-    [
+  [
     "if statement with var",
     "lasso x = 1 lasso y = 1 lasso z = x - y == 0 ifin z hit holler x fine",
   ],
@@ -62,11 +62,17 @@ const semanticChecks = [
   //Test 18
   ["== expression with whole numbers", "lasso x = 1 lasso y = 1 holler x == y"],
   // Test 19
-  ["== expression with non-whole numbers", "lasso x = 1.0 lasso y = 1.0 holler x == y"],
+  [
+    "== expression with non-whole numbers",
+    "lasso x = 1.0 lasso y = 1.0 holler x == y",
+  ],
   // Test 20
-  ["== expression with mixed numbers", "lasso x = 1 lasso y = 1.0 holler x == y"],
+  [
+    "== expression with mixed numbers",
+    "lasso x = 1 lasso y = 1.0 holler x == y",
+  ],
   // Test 21
-  ["adding mixed numbers", "lasso x = 1 lasso y = 1.0 holler x + y"]
+  ["adding mixed numbers", "lasso x = 1 lasso y = 1.0 holler x + y"],
 ];
 
 // const sample = `let x=sqrt(9) function f(x)=3*x while(true){x=3 print(0?f(x):2)}`;
@@ -87,22 +93,37 @@ const semanticErrors = [
   ["subtract strings", 'holler "a" - "b"', /Expected a number/],
   //Test 6
   ["adding strings", 'holler "a" + "b" ', /Expected a number/],
-  //Test 7 
+  //Test 7
   ["invalid type for *", 'holler "a" *  3', /Expected a number/],
   //Test 8
   ["invalid type for /", 'holler "a" /  3', /Expected a number/],
   //Test 9
-  ["invalid type for ifin", "lasso x = 1 ifin x hit holler x fine", /Expected a boolean/],
-  // Test 10 
+  [
+    "invalid type for ifin",
+    "lasso x = 1 ifin x hit holler x fine",
+    /Expected a boolean/,
+  ],
+  // Test 10
   // Having issues getting the type of a previously declared var so this doesn't work yet
   // ["invalid variable reassignment", 'lasso x = 1 x = "string"', /Operands must have same type/]
   // Test 11
-  ["non-int range", "corrale (x : 5.1) {holler x} ", /Number cannot contain decimal values/],
+  [
+    "non-int range",
+    "corrale (x : 5.1) {holler x} ",
+    /Number cannot contain decimal values/,
+  ],
   // Test 12
-  ["non-number as range", 'corrale (x : "string") {holler x} ', /Expected a number/],
+  [
+    "non-number as range",
+    'corrale (x : "string") {holler x} ',
+    /Expected a number/,
+  ],
   //Test 13
-  ["variable initialized before for loop", 'lasso x = "string" corrale (x : 5) {holler x}', /Identifier x already declared/]
-
+  [
+    "variable initialized before for loop",
+    'lasso x = "string" corrale (x : 5) {holler x}',
+    /Identifier x already declared/,
+  ],
 ];
 
 // const expected = `   1 | Program statements=[#2,#6,#10]
