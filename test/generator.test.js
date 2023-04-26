@@ -61,13 +61,13 @@ const fixtures = [
       yeehaw scream(){
         holler("AAAAAA")
       }
-      scream._()
+      scream()
     `,
     expected: dedent`
-      function scream() {
-        console.log("AAAAAA");
+      function scream_1() {
+        console.log("AAAAAA")
       }
-      scream();
+      scream_1()
     `,
   },
   {

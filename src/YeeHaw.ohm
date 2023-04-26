@@ -6,6 +6,7 @@ YeeHaw {
             | IfStmt
             | Return
             | FuncDec
+            | Call
             | DotCall 
             | DotExp
             | skedaddle
@@ -23,8 +24,9 @@ YeeHaw {
   ConstBlock  = "{" Constructor Statement* "}"
   ClassDec	  = cowhide id ConstBlock
   Constructor = yeehaw "***"cactus"***""(" Params ")" Block
-  DotCall	  = id"."id"(" Params ")"
-  DotExp	  = id"."id
+  Call        = id "(" Params ")"
+  DotCall	    = id "."id"(" Params ")"
+  DotExp	    = id "."id
 
   Loop      = corrale "("id ":" Exp ")" Block
   Type      = id

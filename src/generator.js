@@ -33,6 +33,7 @@ export default function generate(program) {
   })(new Map());
 
   function gen(node) {
+    // console.log("NODE:", node.constructor);
     return generators[node.constructor.name](node);
   }
 
@@ -67,7 +68,7 @@ export default function generate(program) {
     //   return targetName(f)
     // },
     FunctionDeclaration(d) {
-      output.push(`function ${gen(d.fun)}(${gen(d.params).join(", ")}) {`);
+      output.push(`function ${gen(d.fun)}(${gen(d.fun.params).join(", ")}) {`);
       gen(d.body);
       output.push("}");
     },
@@ -190,6 +191,9 @@ export default function generate(program) {
     // ConstructorCall(c) {
     //   return `new ${gen(c.callee)}(${gen(c.args).join(", ")})`
     // },
+    Call(c) {
+      output.push(`${gen(c.id)}(${gen(c.args)})`);
+    },
     Number(e) {
       return e;
     },

@@ -272,6 +272,15 @@ export default function analyze(sourceCode) {
       return new core.DotCall(id1.rep(), id2.rep(), params.asIteration().rep());
     },
 
+    Call(id, _open, args, _close) {
+      const entity = context.lookup(id.sourceString);
+      return new core.Call(
+        entity,
+        args.asIteration().children.map((a) => a.rep())
+      );
+      //  new core.Call(id.rep(), params.asIteration().rep());
+    },
+
     DotExp(id1, _dot, id2) {
       return new core.DotExp(id1.rep(), id2.rep());
     },
