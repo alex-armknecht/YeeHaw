@@ -51,6 +51,7 @@ YeeHaw {
   
   Term      = numeral 
             | strlit
+            | id "(" ListOf<Exp, ","> ")"   --call
             | Var
             | "(" Exp ")"    --parens
 

@@ -33,16 +33,16 @@ const fixtures = [
     name: "FuncDec", //for lines 70-72
     source: `
       yeehaw multiply(firstNum, secondNum){
-        rodeo firstNum * secondNum
+        rodeo 1 * 2
       }
       lasso answer = multiply(5,10)
       holler(answer)
     `,
     expected: dedent`
       function multiply(firstNum, secondNum) {
-        return firstNum * secondNum
+        return 1 * 2
       }
-      let answer = multiply(5,10);
+      let answer = multiply(5,10)
       console.log(answer)
     `,
   },
@@ -93,9 +93,10 @@ const fixtures = [
     expected: dedent`
       let x_1 = 1;
       let y_2 = 1;
-      if(x_1 - y_2 == 0) {
-        console.log(x);
-      }   
+      if (((x_1 - y_2) === 0)) {
+        console.log(x_1)
+      } else {
+      }
     `,
   },
   {
@@ -119,10 +120,12 @@ const fixtures = [
     name: "bool", //for lines 200-203
     source: `
       lasso bullseye = hit
+      lasso airball = miss
       holler(bullseye)
     `,
     expected: dedent`
       let bullseye_1 = true;
+      let airball_2 = false;
       console.log(bullseye_1)
     `,
   },

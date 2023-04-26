@@ -15,17 +15,17 @@ export class Program {
 
 export class Type {
   // Type of all basic type int, float, string, etc. and superclass of others
-  static BOOLEAN = new Type("boolean")
+  static BOOLEAN = new Type("boolean");
   // static INT = new Type("int")
-  static NUMBER = new Type("number")
-  static STRING = new Type("string")
-  static VOID = new Type("void")
-  static ANY = new Type("any")
+  static NUMBER = new Type("number");
+  static STRING = new Type("string");
+  static VOID = new Type("void");
+  static ANY = new Type("any");
   constructor(description) {
     // The description is a convenient way to view the type. For basic
     // types or structs, it will just be the names. For arrays, you will
     // see "[T]". For optionals, "T?". For functions "(T1,...Tn)->T0".
-    Object.assign(this, { description })
+    Object.assign(this, { description });
   }
 }
 
@@ -69,7 +69,7 @@ export class IfStatement {
 
 export class BinaryExpression {
   constructor(op, left, right, type) {
-    Object.assign(this, {op, left, right, type });
+    Object.assign(this, { op, left, right, type });
   }
 }
 
@@ -104,17 +104,23 @@ export class DotCall {
   }
 }
 
+export class Call {
+  constructor(id, args) {
+    Object.assign(this, { id, args });
+  }
+}
+
 export class DotExp {
   constructor(id1, id2) {
     Object.assign(this, { id1, id2 });
   }
 }
 
- export class Loop {
-    constructor(iterator, range, body) {
-     Object.assign(this, {iterator, range, body });
-   }
- }
+export class Loop {
+  constructor(iterator, range, body) {
+    Object.assign(this, { iterator, range, body });
+  }
+}
 
 //  export class BreakStatement {
 //   // Intentionally empty
@@ -153,6 +159,6 @@ Program.prototype[util.inspect.custom] = function () {
   return [...lines()].join("\n");
 };
 
-String.prototype.type = Type.STRING
-Number.prototype.type = Type.NUMBER
-Boolean.prototype.type = Type.BOOLEAN
+String.prototype.type = Type.STRING;
+Number.prototype.type = Type.NUMBER;
+Boolean.prototype.type = Type.BOOLEAN;

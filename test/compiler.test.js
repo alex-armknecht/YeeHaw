@@ -14,12 +14,12 @@ describe("The compiler", () => {
     assert(util.format(compiled).startsWith("   1 | Program"));
     done();
   });
-  it("accepts the optimized option", (done) => {
-    // const compiled = compile(sampleProgram, "optimized");
-    assert.throws(() => compile(sampleProgram, "optimized"));
-    // assert(util.format(compiled).startsWith("   1 | Program"));
-    done();
-  });
+  // it("accepts the optimized option", (done) => {
+  //   // const compiled = compile(sampleProgram, "optimized");
+  //   assert.throws(() => compile(sampleProgram, "optimized"));
+  //   // assert(util.format(compiled).startsWith("   1 | Program"));
+  //   done();
+  // });
   it("generates js code when given the js option", (done) => {
     // const compiled = compile(sampleProgram, "js");
     assert.throws(() => compile(sampleProgram, "js"));

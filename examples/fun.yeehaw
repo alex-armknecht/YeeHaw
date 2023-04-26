@@ -1,0 +1,6 @@
+      yeehaw multiply(firstNum, secondNum){
+        rodeo 2 * 5
+      }
+      lasso answer = multiply(5,10)
+      holler(answer)
+      
