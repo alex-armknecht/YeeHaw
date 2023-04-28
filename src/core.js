@@ -110,6 +110,12 @@ export class Call {
   }
 }
 
+export class CallStatement {
+  constructor(call) {
+    Object.assign(this, { call });
+  }
+}
+
 export class DotExp {
   constructor(id1, id2) {
     Object.assign(this, { id1, id2 });

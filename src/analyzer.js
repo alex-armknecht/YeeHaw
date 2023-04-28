@@ -204,6 +204,7 @@ export default function analyze(sourceCode) {
 
     Term_call(id, _open, args, _close) {
       const entity = context.lookup(id.sourceString);
+      // TODO: CHECK THAT entity is a function
       return new core.Call(
         entity,
         args.asIteration().children.map((a) => a.rep())
@@ -244,7 +245,9 @@ export default function analyze(sourceCode) {
     FuncDec(_yeehaw, id, _open, params, _close, body) {
       // Inspired by Carlos
       const paramNames = params.rep();
-      const parameters = paramNames.map((name) => new core.Variable(name));
+      const parameters = paramNames.map(
+        (name) => new core.Variable(name, core.Type.NUMBER)
+      );
       const f = new core.Function(id.sourceString, parameters);
       context.add(id.rep(), f);
       context = context.newChildContext({ inLoop: false, function: f });

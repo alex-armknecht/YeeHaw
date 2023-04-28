@@ -21,9 +21,8 @@ describe("The compiler", () => {
   //   done();
   // });
   it("generates js code when given the js option", (done) => {
-    // const compiled = compile(sampleProgram, "js");
-    assert.throws(() => compile(sampleProgram, "js"));
-    // assert(util.format(compiled).startsWith("console.log(0)"));
+    const compiled = compile(sampleProgram, "js");
+    assert(util.format(compiled).startsWith("console.log(0)"));
     done();
   });
 });

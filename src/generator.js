@@ -33,7 +33,7 @@ export default function generate(program) {
   })(new Map());
 
   function gen(node) {
-    // console.log("NODE:", node.constructor);
+    //console.log("NODE:", node);
     return generators[node.constructor.name](node);
   }
 
@@ -88,15 +88,15 @@ export default function generate(program) {
     // Decrement(s) {
     //   output.push(`${gen(s.variable)}--;`)
     // },
-    Assignment(s) {
+    AssignmentStatement(s) {
       output.push(`${gen(s.target)} = ${gen(s.source)};`);
     },
     // BreakStatement(s) {
     //   output.push("break;")
     // },
-    // ReturnStatement(s) {
-    //   output.push(`return ${gen(s.expression)};`)
-    // },
+    Return(s) {
+      output.push(`return ${gen(s.argument)};`);
+    },
     // ShortReturnStatement(s) {
     //   output.push("return;")
     // },
@@ -192,7 +192,8 @@ export default function generate(program) {
     //   return `new ${gen(c.callee)}(${gen(c.args).join(", ")})`
     // },
     Call(c) {
-      output.push(`${gen(c.id)}(${gen(c.args)})`);
+      // if statement ==>  output.push(`${gen(c.id)}(${gen(c.args)})`);
+      return `${gen(c.id)}(${gen(c.args)})`;
     },
     Number(e) {
       return e;

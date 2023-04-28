@@ -1,5 +1,5 @@
-yeehaw multiply(firstNum, secondNum){
-    rodeo firstNum * secondNum
+yeehaw multiply(x, y){
+    rodeo x * y
 }
 lasso answer = multiply(5,10)
 holler(answer)

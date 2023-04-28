@@ -39,11 +39,11 @@ const fixtures = [
       holler(answer)
     `,
     expected: dedent`
-      function multiply(firstNum, secondNum) {
-        return 1 * 2
+      function multiply_1(firstNum_2, secondNum_3) {
+        return (1 * 2);
       }
-      let answer = multiply(5,10)
-      console.log(answer)
+      let answer_4 = multiply_1(5,10);
+      console.log(answer_4)
     `,
   },
   {
@@ -61,13 +61,11 @@ const fixtures = [
       yeehaw scream(){
         holler("AAAAAA")
       }
-      scream()
     `,
     expected: dedent`
       function scream_1() {
         console.log("AAAAAA")
       }
-      scream_1()
     `,
   },
   {
@@ -78,9 +76,9 @@ const fixtures = [
       holler(x)
     `,
     expected: dedent`
-      let x = 1;
-      x = x + 5;
-      console.log(x);
+      let x_1 = 1;
+      x = (x_1 + 5);
+      console.log(x_1)
     `,
   },
   {

@@ -17,7 +17,7 @@ YeeHaw {
   AssignStmt  = id "=" Exp 
   IfStmt      = ifin Exp hit Statement+ miss Statement+ fine  --else
               | ifin Exp hit Statement+ fine                  --noelse
-  Return      = rodeo Exp?
+  Return      = rodeo Exp
   Params      = ListOf<id, ",">
   Block 	    = "{" Statement* "}"
   FuncDec 	  = yeehaw id"(" Params ")" Block

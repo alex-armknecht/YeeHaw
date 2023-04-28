@@ -80,7 +80,11 @@ const semanticErrors = [
   // Test 1
   ["using undeclared identifiers", "holler x", /Identifier x not declared/],
   //Test 2
-  ["a variable used as function", "lasso x = 1 x(2);", /Expected "." or "="/],
+  [
+    "a variable used as function",
+    "lasso x = 1 holler(x(2))",
+    /Expected "." or "="/,
+  ],
   //Test 3
   [
     "re-declared identifier",
