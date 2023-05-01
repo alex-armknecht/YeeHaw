@@ -27,23 +27,23 @@ function must(condition, message, errorLocation) {
 }
 
 function mustNotAlreadyBeDeclared(context, name) {
-  must(!context.sees(name), `Identifier ${name} already declared`);
+  must(!context.sees(name), `Darlin' you already declared ${name} above`);
 }
 
 function mustHaveBeenFound(entity, name) {
-  must(entity, `Identifier ${name} not declared`);
+  must(entity, `Sugar I think you forgot to declare ${name} above`);
 }
 
 function mustBePositive(e, at) {
-  must(e >= 0, "Must be positive", at);
+  must(e >= 0, "This number be positive moonpie", at);
 }
 
 function mustHaveTypeNumber(e, at) {
-  must(e.type === NUMBER, "Expected a number", at);
+  must(e.type === NUMBER, "Sugar I'm expecting a number here", at);
 }
 
 function mustBeInt(e, at) {
-  must(e % 1 == 0, "Number cannot contain decimal values", at);
+  must(e % 1 == 0, "There shouldn't be any decimal values here puddin'", at);
 }
 
 // function mustHaveSameType(e1, e2, at) {
@@ -53,10 +53,10 @@ function mustBeInt(e, at) {
 // }
 
 function mustHaveBooleanType(e, at) {
-  must(e.type === BOOLEAN, "Expected a boolean", at);
+  must(e.type === BOOLEAN, "Sweetie I'm looking for a boolean here", at);
 }
 function mustBeInsideFunction(context, at) {
-  must(context.function, "Rodeo must be inside a function", at);
+  must(context.function, "Honeypie this rodeo must be contained in the function", at);
 }
 // function mustBeInLoop(context, at) {
 //   must(context.inLoop, "Break can only appear in a loop", at)

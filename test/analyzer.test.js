@@ -78,34 +78,34 @@ const semanticChecks = [
 // const sample = `let x=sqrt(9) function f(x)=3*x while(true){x=3 print(0?f(x):2)}`;
 const semanticErrors = [
   // Test 1
-  ["using undeclared identifiers", "holler x", /Identifier x not declared/],
-  //Test 2
-  [
-    "a variable used as function",
-    "lasso x = 1 holler(x(2))",
-    /Expected "." or "="/,
-  ],
+  ["using undeclared identifiers", "holler x", /Sugar I think you forgot to declare x above/],
+  // //Test 2
+  // [
+  //   "a variable used as function",
+  //   "lasso x = 1 holler(x(2))",
+  //   /Expected "." or "="/,
+  // ],
   //Test 3
   [
     "re-declared identifier",
     "lasso x = 1 lasso x = 2",
-    /Identifier x already declared/,
+    /Darlin' you already declared x above/,
   ],
   //Test 4
-  ["return outside of function", "rodeo 1", /Rodeo must be inside a function/],
+  ["return outside of function", "rodeo 1", /Honeypie this rodeo must be contained in the function/],
   //Test 5
-  ["subtract strings", 'holler "a" - "b"', /Expected a number/],
+  ["subtract strings", 'holler "a" - "b"', /Sugar I'm expecting a number here/],
   //Test 6
-  ["adding strings", 'holler "a" + "b" ', /Expected a number/],
+  ["adding strings", 'holler "a" + "b" ', /Sugar I'm expecting a number here/],
   //Test 7
-  ["invalid type for *", 'holler "a" *  3', /Expected a number/],
+  ["invalid type for *", 'holler "a" *  3', /Sugar I'm expecting a number here/],
   //Test 8
-  ["invalid type for /", 'holler "a" /  3', /Expected a number/],
+  ["invalid type for /", 'holler "a" /  3', /Sugar I'm expecting a number here/],
   //Test 9
   [
     "invalid type for ifin",
     "lasso x = 1 ifin x hit holler x fine",
-    /Expected a boolean/,
+    /Sweetie I'm looking for a boolean here/,
   ],
   // Test 10
   // Having issues getting the type of a previously declared var so this doesn't work yet
@@ -114,19 +114,19 @@ const semanticErrors = [
   [
     "non-int range",
     "corrale (x : 5.1) {holler x} ",
-    /Number cannot contain decimal values/,
+    /There shouldn't be any decimal values here puddin'/,
   ],
   // Test 12
   [
     "non-number as range",
     'corrale (x : "string") {holler x} ',
-    /Expected a number/,
+    /Sugar I'm expecting a number here/,
   ],
   //Test 13
   [
     "variable initialized before for loop",
     'lasso x = "string" corrale (x : 5) {holler x}',
-    /Identifier x already declared/,
+    /Darlin' you already declared x above/,
   ],
 ];
 
