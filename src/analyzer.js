@@ -35,7 +35,7 @@ function mustHaveBeenFound(entity, name) {
 }
 
 function mustBePositive(e, at) {
-  must(e >= 0, "This number be positive moonpie", at);
+  must(e >= 0, "This number must be positive moonpie", at);
 }
 
 function mustHaveTypeNumber(e, at) {
