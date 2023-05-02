@@ -281,7 +281,6 @@ export default function analyze(sourceCode) {
         entity,
         args.asIteration().children.map((a) => a.rep())
       );
-      //  new core.Call(id.rep(), params.asIteration().rep());
     },
 
     DotExp(id1, _dot, id2) {
@@ -290,6 +289,6 @@ export default function analyze(sourceCode) {
   });
 
   const match = YeeHawGrammar.match(sourceCode);
-  if (!match.succeeded()) error(match.message);
+  if (!match.succeeded()) throw new Error(match.message);
   return analyzer(match).rep();
 }
