@@ -243,7 +243,7 @@ export default function analyze(sourceCode) {
       mustHaveTypeNumber(range.rep());
       mustBeInt(range.rep());
       mustBePositive(range.rep());
-      return new core.Loop(id, range, body);
+      return new core.Loop(id.sourceString, range.rep(), body.rep());
     },
 
     FuncDec(_yeehaw, id, _open, params, _close, body) {
@@ -261,10 +261,10 @@ export default function analyze(sourceCode) {
       return new core.FunctionDeclaration(f, b);
     },
 
-    // Statement_break(_Skedaddle) {
-    //   mustBeInLoop(context)
-    //   return new core.BreakStatement()
-    // },
+    skedaddle(_) {
+      //mustBeInLoop(context)
+      return new core.BreakStatement();
+    },
 
     Return(_rodeo, arg) {
       mustBeInsideFunction(context, _rodeo);

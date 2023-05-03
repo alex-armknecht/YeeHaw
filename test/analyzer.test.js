@@ -44,7 +44,8 @@ const semanticChecks = [
   // Test 11
   // ["constructor with params works", "cowhide myClass{ yeehaw ***cactus***(myVar1, myVar2){} yeehaw sayHowdy(){}}"],
   // Test 12
-  ["for loops", "corrale (x : 5) {holler x} "],
+  ["for loops", "corrale (x : 5) {holler 3} "],
+  ["skedaddle", "corrale (x : 5) {skedaddle} "],
   // Test 13
   //   [
   //     "all predefined identifiers",

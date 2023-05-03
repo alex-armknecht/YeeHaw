@@ -128,9 +128,9 @@ export class Loop {
   }
 }
 
-//  export class BreakStatement {
-//   // Intentionally empty
-// }
+export class BreakStatement {
+  // Intentionally empty
+}
 
 // Return a compact and pretty string representation of the node graph,
 // taking care of cycles. Written here from scratch because the built-in
