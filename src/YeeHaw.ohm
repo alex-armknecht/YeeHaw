@@ -34,7 +34,9 @@ YeeHaw {
   id        = ~keyword idchar+
   idchar    = letter | "_"
   
-  keyword   = lasso | holler | ifin | hit | miss | fine | yeehaw | rodeo | corrale | cowhide | cactus | skedaddle
+  keyword   = lasso | holler | ifin | hit | miss 
+            | fine | yeehaw | rodeo | corrale 
+            | cowhide | cactus | skedaddle
   Var       = id
  
   Exp       = Exp0 "==" Exp0  --equal
@@ -74,5 +76,4 @@ YeeHaw {
   strlit    = "\"" (~"\"" any)* "\""
 
   space    += "//" (~"\n" any)*       --comment
-
 }

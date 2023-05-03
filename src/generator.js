@@ -28,7 +28,7 @@ export default function generate(program) {
       if (!mapping.has(entity)) {
         mapping.set(entity, mapping.size + 1);
       }
-      return `${entity.name ?? entity.description}_${mapping.get(entity)}`;
+      return `${entity.name}_${mapping.get(entity)}`;
     };
   })(new Map());
 
@@ -103,14 +103,9 @@ export default function generate(program) {
     IfStatement(s) {
       output.push(`if (${gen(s.test)}) {`);
       gen(s.consequent);
-      if (s.alternate instanceof IfStatement) {
-        output.push("} else");
-        gen(s.alternate);
-      } else {
-        output.push("} else {");
-        gen(s.alternate);
-        output.push("}");
-      }
+      output.push("} else {");
+      gen(s.alternate);
+      output.push("}");
     },
     // ShortIfStatement(s) {
     //   output.push(`if (${gen(s.test)}) {`)
@@ -215,9 +210,6 @@ export default function generate(program) {
     },
   };
 
-  let randomCalled = false;
   gen(program);
-  if (randomCalled)
-    output.push("function _r(a){return a[~~(Math.random()*a.length)]}");
   return output.join("\n");
 }

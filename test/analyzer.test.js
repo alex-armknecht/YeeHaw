@@ -73,12 +73,18 @@ const semanticChecks = [
   ],
   // Test 21
   ["adding mixed numbers", "lasso x = 1 lasso y = 1.0 holler x + y"],
+  // Test 22 (call statement)
+  ["call statement", "lasso x = 1 yeehaw f() {holler x} f()"],
 ];
 
 // const sample = `let x=sqrt(9) function f(x)=3*x while(true){x=3 print(0?f(x):2)}`;
 const semanticErrors = [
   // Test 1
-  ["using undeclared identifiers", "holler x", /Sugar I think you forgot to declare x above/],
+  [
+    "using undeclared identifiers",
+    "holler x",
+    /Sugar I think you forgot to declare x above/,
+  ],
   // //Test 2
   // [
   //   "a variable used as function",
@@ -92,15 +98,27 @@ const semanticErrors = [
     /Darlin' you already declared x above/,
   ],
   //Test 4
-  ["return outside of function", "rodeo 1", /Honeypie this rodeo must be contained in the function/],
+  [
+    "return outside of function",
+    "rodeo 1",
+    /Honeypie this rodeo must be contained in the function/,
+  ],
   //Test 5
   ["subtract strings", 'holler "a" - "b"', /Sugar I'm expecting a number here/],
   //Test 6
   ["adding strings", 'holler "a" + "b" ', /Sugar I'm expecting a number here/],
   //Test 7
-  ["invalid type for *", 'holler "a" *  3', /Sugar I'm expecting a number here/],
+  [
+    "invalid type for *",
+    'holler "a" *  3',
+    /Sugar I'm expecting a number here/,
+  ],
   //Test 8
-  ["invalid type for /", 'holler "a" /  3', /Sugar I'm expecting a number here/],
+  [
+    "invalid type for /",
+    'holler "a" /  3',
+    /Sugar I'm expecting a number here/,
+  ],
   //Test 9
   [
     "invalid type for ifin",
@@ -146,6 +164,9 @@ const semanticErrors = [
 //   14 | Call callee=#7 args=[#3]`;
 
 describe("The analyzer", () => {
+  it("throws on a syntax error", () => {
+    assert.throws(() => analyze("1 +"));
+  });
   it("can invoke the error function", () => {
     assert.throws(() => error("Something bad happened"));
   });
