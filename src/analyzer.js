@@ -1,19 +1,16 @@
-//In your analyzer.js file, implement the part of the compile that produces the AST, without doing any contextual checks.
+
 import ohm from "ohm-js";
 import fs from "fs";
 import * as core from "./core.js";
 
 const YeeHawGrammar = ohm.grammar(fs.readFileSync("src/YeeHaw.ohm"));
 
-// Change to cowboy names later
-// const INT = core.Type.INT
 const NUMBER = core.Type.NUMBER;
 const STRING = core.Type.STRING;
 const BOOLEAN = core.Type.BOOLEAN;
 const ANY = core.Type.ANY;
 const VOID = core.Type.VOID;
 
-// Throw an error message that takes advantage of Ohm's messaging
 export function error(message, node) {
   if (node) {
     throw new Error(`${node.source.getLineAndColumnMessage()}${message}`);
@@ -21,7 +18,6 @@ export function error(message, node) {
   throw new Error(message);
 }
 
-// CHECKING FUNCTIONS (need atleast 5 checking functions)
 function must(condition, message, errorLocation) {
   if (!condition) error(message, errorLocation);
 }
@@ -46,12 +42,6 @@ function mustBeInt(e, at) {
   must(e % 1 == 0, "There shouldn't be any decimal values here puddin'", at);
 }
 
-// function mustHaveSameType(e1, e2, at) {
-//   console.log(e1.type)
-//   console.log(e2.type)
-//   must(e1.type === e2.type, "Operands must have same type", at)
-// }
-
 function mustHaveBooleanType(e, at) {
   must(e.type === BOOLEAN, "Sweetie I'm looking for a boolean here", at);
 }
@@ -62,11 +52,7 @@ function mustBeInsideFunction(context, at) {
     at
   );
 }
-// function mustBeInLoop(context, at) {
-//   must(context.inLoop, "Break can only appear in a loop", at)
-// }
 
-// CONTEXT CLASS (inspired by Carlos)
 class Context {
   constructor({
     parent = null,
@@ -77,7 +63,6 @@ class Context {
     Object.assign(this, { parent, locals, inLoop, function: f });
   }
   sees(name) {
-    // Search "outward" through enclosing scopes
     return this.locals.has(name) || this.parent?.sees(name);
   }
   add(name, entity) {
@@ -126,7 +111,6 @@ export default function analyze(sourceCode) {
     },
 
     AssignStmt(target, _eq, source) {
-      // mustHaveSameType(target.rep(), source.rep())
       return new core.AssignmentStatement(target.rep(), source.rep());
     },
 
@@ -208,12 +192,10 @@ export default function analyze(sourceCode) {
 
     Term_call(id, _open, args, _close) {
       const entity = context.lookup(id.sourceString);
-      // TODO: CHECK THAT entity is a function
       return new core.Call(
         entity,
         args.asIteration().children.map((a) => a.rep())
       );
-      // TODO: check # of args
     },
 
     numeral(_leading, _dot, _fractional) {
@@ -247,7 +229,6 @@ export default function analyze(sourceCode) {
     },
 
     FuncDec(_yeehaw, id, _open, params, _close, body) {
-      // Inspired by Carlos
       const paramNames = params.rep();
       const parameters = paramNames.map(
         (name) => new core.Variable(name, core.Type.NUMBER)
@@ -262,7 +243,6 @@ export default function analyze(sourceCode) {
     },
 
     skedaddle(_) {
-      //mustBeInLoop(context)
       return new core.BreakStatement();
     },
 

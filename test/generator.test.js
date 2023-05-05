@@ -20,7 +20,7 @@ const fixtures = [
     `,
   },
   {
-    name: "varDec", //for lines 49-51
+    name: "varDec", 
     source: `
       lasso x = 1
       holler(x)
@@ -31,7 +31,7 @@ const fixtures = [
     `,
   },
   {
-    name: "FuncDec", //for lines 70-72
+    name: "FuncDec", 
     source: `
       yeehaw multiply(firstNum, secondNum){
         rodeo 1 * 2
@@ -48,7 +48,7 @@ const fixtures = [
     `,
   },
   {
-    name: "var", //for lines 75-79
+    name: "var", 
     source: `
       lasso cowName = "bessy"
     `,
@@ -57,7 +57,7 @@ const fixtures = [
     `,
   },
   {
-    name: "func", //for lines 82
+    name: "func", 
     source: `
       yeehaw scream(){
         holler("AAAAAA")
@@ -70,7 +70,7 @@ const fixtures = [
     `,
   },
   {
-    name: "ass", //for lines 91
+    name: "ass", 
     source: `
       lasso x = 1
       x = x + 5
@@ -83,7 +83,7 @@ const fixtures = [
     `,
   },
   {
-    name: "ifstmt", //103-112
+    name: "ifstmt", 
     source: `
       lasso x = 1
       lasso y = 1
@@ -99,7 +99,7 @@ const fixtures = [
     `,
   },
   {
-    name: "ifelsestmt", //for lines 106-107
+    name: "ifelsestmt", 
     source: `
       lasso x = 1
       lasso y = 5
@@ -116,7 +116,7 @@ const fixtures = [
     `,
   },
   {
-    name: "bool", //for lines 200-203
+    name: "bool", 
     source: `
       lasso bullseye = hit
       lasso airball = miss
